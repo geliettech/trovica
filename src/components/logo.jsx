@@ -1,6 +1,6 @@
 const Logo = () => {
   return (
-    <div className="text-[24px] sm:text-[26px] font-bold text-gray-800">
+    <div className="text-[24px] sm:text-[26px] font-bold text-gray-700">
       Trovica
     </div>
   );

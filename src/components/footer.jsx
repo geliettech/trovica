@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>footer</footer>
+        <footer className='container mx-auto px-4 md:px-6 lg:px-16 py-5'>footer</footer>
     )
 }
 

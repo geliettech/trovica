@@ -4,13 +4,9 @@ import { FaPhone, FaXTwitter } from "react-icons/fa6";
 
 const TopBar = () => {
     return (
-        <section className="z-50 bg-[#83cc61] py-3">
-            <div className="
-        max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
-        text-white text-sm font-medium
-        flex flex-col gap-3
-        sm:flex-row sm:justify-between sm:items-center
-      ">
+        <section className="z-50 bg-[#83cc61]">
+            <div className="container mx-auto px-4 md:px-6 lg:px-16 py-3 flex flex-col gap-3
+        sm:flex-row sm:justify-between sm:items-center text-white text-sm font-medium">
                 {/* Contact info */}
                 <div className="
           flex flex-col gap-2 text-center
@@ -18,7 +14,7 @@ const TopBar = () => {
         ">
                     <Link
                         to="mailto:info@trovica.com"
-                        className="flex items-center justify-center sm:justify-start gap-2 hover:opacity-80"
+                        className="flex items-center justify-center sm:justify-start gap-1 hover:opacity-80"
                     >
                         <FaEnvelope />
                         info@trovica.com
