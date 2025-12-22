@@ -17,7 +17,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const getNavLinkClasses = ({ isActive }) =>
-    `text-[16px] font-medium transition duration-200
+    `text-[16px] font-medium transition-colors duration-800
      ${isActive
       ? "text-[#83cc61] border-b-2 border-[#83cc61] rounded-lg px-1"
       : "text-gray-700 hover:text-[#83cc61]"
