@@ -16,12 +16,25 @@ const NavBar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const getNavLinkClasses = ({ isActive }) =>
-    `text-[16px] font-medium transition-colors duration-800
-     ${isActive
-      ? "text-[#83cc61] border-b-2 border-[#83cc61] rounded-lg px-1"
-      : "text-gray-700 hover:text-[#83cc61]"
+  const getNavLinkClasses = ({ isActive, name }) => {
+    // Contact button styles
+    if (name === "Contact") {
+      return `px-4 py-2 rounded-full font-medium transition-colors duration-300
+      ${
+        isActive
+          ? "bg-teal-600 text-white"
+          : "bg-teal-600 text-white hover:opacity-90"
+      }`;
+    }
+
+    // Default nav styles
+    return `text-[16px] font-medium transition-colors duration-300
+    ${
+      isActive
+        ? "text-teal-600 border-b-2 border-teal-600 rounded-lg px-1"
+        : "text-gray-700 hover:text-teal-600 hover:opacity-90"
     }`;
+  };
 
   return (
     <>
@@ -31,7 +44,9 @@ const NavBar = () => {
           <NavLink
             key={item.name}
             to={item.href}
-            className={getNavLinkClasses}
+            className={({ isActive }) =>
+              getNavLinkClasses({ isActive, name: item.name })
+            }
             end={item.href === "/"}
           >
             {item.name}
@@ -50,15 +65,18 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-md transition-all duration-300 ${isOpen ? "block" : "hidden"
-          }`}
+        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-md transition-all duration-300 ${
+          isOpen ? "block" : "hidden"
+        }`}
       >
         <div className="flex flex-col items-center gap-6 py-6">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.href}
-              className={getNavLinkClasses}
+              className={({ isActive }) =>
+                getNavLinkClasses({ isActive, name: item.name })
+              }
               end={item.href === "/"}
               onClick={() => setIsOpen(false)}
             >

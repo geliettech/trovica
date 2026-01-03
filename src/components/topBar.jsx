@@ -4,7 +4,7 @@ import { FaPhone, FaXTwitter } from "react-icons/fa6";
 
 const TopBar = () => {
     return (
-        <section className="z-50 bg-[#83cc61]">
+        <section className="z-50 bg-teal-600">
             <div className="container mx-auto px-4 md:px-6 lg:px-16 py-3 flex flex-col gap-3
         sm:flex-row sm:justify-between sm:items-center text-white text-sm font-medium">
                 {/* Contact info */}
