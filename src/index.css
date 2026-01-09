@@ -49,7 +49,7 @@
     @apply font-medium text-gray-700 text-base hover:text-gray-950;
   }
   .dashed__teal {
-    @apply after:content-[''] after:block after:w-12 after:h-1 after:bg-teal-600 after:mx-auto after:mt-2;
+    @apply after:content-[''] after:block after:w-12 after:h-0.5 after:bg-teal-600 after:mx-auto after:mt-2;
   }
   .whiteText__paragraph {
     @apply text-white font-medium text-base leading-7;
@@ -57,30 +57,11 @@
   .blackText__paragraph {
     @apply text-gray-700 font-medium text-base leading-7;
   }
-  .section-title {
-    @apply relative pb-12 flex justify-center;
-  }
-  .section-title::before {
-    @apply content-[''] absolute w-0.5 h-24 bg-teal-600 left-1/2 transform -translate-x-1/2;
-  }
-
-  .section-title::after {
-    @apply content-[''] absolute w-16 h-0.5 bg-teal-600 left-1/2 bottom-4 transform -translate-x-1/2 mb-3;
-  }
-  .section-title h4 {
-    @apply capitalize font-bold text-3xl flex flex-col items-end;
-  }
-    .section-title p {
-    @apply flex items-start w-lg;
-  }
-  .section-title h4 span {
-    @apply block capitalize font-normal text-base;
-  }
   .page-title {
     @apply relative capitalize font-semibold text-xl pb-2 mb-4;
   }
   .page-title::before {
-    @apply content-[''] absolute w-16 h-1 bg-teal-600 bottom-0;
+    @apply content-[''] absolute w-16 h-0.5 bg-teal-600 bottom-0;
   }
   .about-icon .i {
     @apply border border-teal-700 w-10 h-10 text-center leading-10 rounded-full text-teal-700 transition duration-300;
