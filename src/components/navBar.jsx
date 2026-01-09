@@ -19,20 +19,20 @@ const NavBar = () => {
   const getNavLinkClasses = ({ isActive, name }) => {
     // Contact button styles
     if (name === "Contact") {
-      return `px-4 py-2 rounded-full font-medium transition-colors duration-300
+      return `py-2 px-4 text-base
       ${
         isActive
-          ? "bg-teal-600 text-white"
-          : "bg-teal-600 text-white hover:opacity-90"
+          ? "font-medium bg-teal-600/80 text-white rounded-lg transformation"
+          : "btn-primary transformation"
       }`;
     }
 
     // Default nav styles
-    return `text-[16px] font-medium transition-colors duration-300
+    return `text-base
     ${
       isActive
-        ? "text-teal-600 border-b-2 border-teal-600 rounded-lg px-1"
-        : "text-gray-700 hover:text-teal-600 hover:opacity-90"
+        ? "font-medium text-teal-700 border-b-2 border-teal-700 rounded-lg transform transition-transform duration-300 scale-105 cursor-pointer px-1"
+        : "nav__link transformation"
     }`;
   };
 
@@ -57,7 +57,7 @@ const NavBar = () => {
       {/* Mobile Toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden text-gray-700 text-2xl focus:outline-none"
+        className="md:hidden text-gray-700 text-2xl focus:outline-none transformation"
         aria-label="Toggle Menu"
       >
         {isOpen ? <MdClose /> : <FaBars />}
@@ -65,9 +65,10 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-md transition-all duration-300 ${
+        className={`md:hidden absolute top-full right-0 w-1/2 bg-white shadow-md ${
           isOpen ? "block" : "hidden"
-        }`}
+        }`} aria-label="Toggle menu"
+        aria-expanded={isOpen}
       >
         <div className="flex flex-col items-center gap-6 py-6">
           {navItems.map((item) => (

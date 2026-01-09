@@ -1,8 +1,8 @@
+import { Link } from "react-router";
+
 const Logo = () => {
   return (
-    <div className="text-[24px] sm:text-[26px] font-bold text-gray-700">
-      Trovica
-    </div>
+     <Link className="nav__link text-2xl md:text-3xl font-semibold uppercase" to="/">Trovica</Link>
   );
 };
 

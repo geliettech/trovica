@@ -1,7 +1,90 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @import "tailwindcss";
-body {
-  font-family: "Poppins", sans-serif;
+
+/* =========================
+   Theme variables
+========================= */
+@theme {
+  --font-poppins: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}
+
+/* =========================
+   Base styles
+========================= */
+@layer base {
+  html,
+  body,
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-poppins);
+  }
+
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+/* =========================
+   Component styles
+========================= */
+@layer components {
+  .container {
+    @apply container mx-auto px-4 md:px-6 lg:px-16 py-6;
+  }
+  .transformation {
+    @apply transform transition-transform duration-300 hover:scale-105 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded-full text-sm md:text-base;
+  }
+
+  .nav__link {
+    @apply font-medium text-gray-700 text-base hover:text-gray-950;
+  }
+  .dashed__teal {
+    @apply after:content-[''] after:block after:w-12 after:h-0.5 after:bg-teal-600 after:mx-auto after:mt-2;
+  }
+  .whiteText__paragraph {
+    @apply text-white font-medium text-base leading-7;
+  }
+  .blackText__paragraph {
+    @apply text-gray-700 font-medium text-base leading-7;
+  }
+  .page-title {
+    @apply relative capitalize font-semibold text-xl pb-2 mb-4;
+  }
+  .page-title::before {
+    @apply content-[''] absolute w-16 h-0.5 bg-teal-600 bottom-0;
+  }
+  .about-icon .i {
+    @apply border border-teal-700 w-10 h-10 text-center leading-10 rounded-full text-teal-700 transition duration-300;
+  }
+  .single-about:hover .about-icon i {
+    @apply bg-teal-700 text-white;
+  }
+}
+
+/* =========================
+   Utility styles
+========================= */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
