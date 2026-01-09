@@ -1,9 +1,104 @@
-import React from 'react'
+import React from "react";
+import { FaLaptop, FaUser } from "react-icons/fa";
+import { FaPencil } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const About = () => {
   return (
-    <div className="container mx-auto px-4 md:px-6 lg:px-16 py-5">About</div>
-  )
-}
+    <section className="">
+      <div className="container pt-30 pb-30">
+        {/* ======================= about heading ==================== */}
+        <div className="section-title">
+          <h4>
+            <span>who we are?</span>about us
+          </h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Perspiciatis fugit quae dignissimos sapiente omnis adipisci!
+          </p>
+        </div>
+       
+       {/* ==================== About Content =================== */}
+        <div className="flex">
+           {/*  Left Content  */}
+          <div className="">
+            <h4 className="page-title">welcome to Trovica</h4>
+            <p className="text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
+              culpa.
+            </p>
+            <p className="text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
+              culpa.
+            </p>
+            <p className="text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
+              culpa.
+            </p>
+            <p className="text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
+              culpa.
+            </p>
+            <p className="text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
+              culpa.
+            </p>
+            <Link to="/about" className="btn-primary">
+              read more
+            </Link>
+          </div>
 
-export default About
+           {/*  Right Content */}
+          <div className="">
+            <div className="flex items-center mb-3">
+              <div className="about-icon me-3">
+                <FaLaptop />
+              </div>
+              <div className="single-about-content">
+                <h4 className="page-title">our mission</h4>
+                <p className="text-gray-900">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Adipisci in repellat nam ipsam quo unde recusandae libero
+                  nostrum, ipsa expedita.
+                </p>
+              </div>
+            </div>
+            <div class="single-about flex items-center mb-3">
+              <div class="about-icon me-3">
+                <FaUser />
+              </div>
+              <div className="single-about-content">
+                <h4 className="page-title">our Vission</h4>
+                <p className="text-gray-900">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Adipisci in repellat nam ipsam quo unde recusandae libero
+                  nostrum, ipsa expedita.
+                </p>
+              </div>
+            </div>
+            <div className="single-about flex items-center mb-3">
+              <div className="about-icon me-3">
+                <FaPencil />
+              </div>
+              <div className="single-about-content">
+                <h4 className="page-title">our History</h4>
+                <p className="text-gray-900">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Adipisci in repellat nam ipsam quo unde recusandae libero
+                  nostrum, ipsa expedita.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
