@@ -1,13 +1,17 @@
 const HeadingSection = () => {
   return (
     <section className="py-6">
-      <div className="container flex justify-end gap-10">
+      <div className="container flex justify-end">
         {/* LEFT GROUP (heading + line) */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center">
           {/* Text */}
           <div className="text-right">
-            <p className="blackText__paragraph block capitalize font-normal text-base">Who We Are?</p>
-            <h2 className="capitalize font-bold text-3xl text-gray-700">About Us</h2>
+            <p className="blackText__paragraph block capitalize font-normal text-base">
+              Who We Are?
+            </p>
+            <h2 className="capitalize font-bold text-3xl text-gray-700">
+              About Us
+            </h2>
           </div>
 
           {/* Line (pseudo elements) */}
@@ -40,9 +44,9 @@ const HeadingSection = () => {
         </div>
 
         {/* RIGHT TEXT */}
-        <p className="max-w-lg text-gray-600 leading-relaxed self-center">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          fugit quae dignissimos sapiente omnis adipisci!
+        <p className="max-w-lg blackText__paragraph font-normal self-center">
+          Trovica is a modern digital agency focused on building meaningful and
+          user-centered digital experiences.
         </p>
       </div>
     </section>
