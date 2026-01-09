@@ -12,43 +12,43 @@ const About = () => {
           <h4>
             <span>who we are?</span>about us
           </h4>
-          <p>
+          <p className="blackText__paragraph">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Perspiciatis fugit quae dignissimos sapiente omnis adipisci!
           </p>
         </div>
        
        {/* ==================== About Content =================== */}
-        <div className="flex">
+        <div className="flex justify-between">
            {/*  Left Content  */}
           <div className="">
             <h4 className="page-title">welcome to Trovica</h4>
-            <p className="text-gray-900">
+            <p className="blackText__paragraph max-w-2xl">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
               quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
               culpa.
             </p>
-            <p className="text-gray-900">
+            <p className="blackText__paragraph ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
               quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
               culpa.
             </p>
-            <p className="text-gray-900">
+            <p className="blackText__paragraph">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
               quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
               culpa.
             </p>
-            <p className="text-gray-900">
+            <p className="blackText__paragraph">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
               quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
               culpa.
             </p>
-            <p className="text-gray-900">
+            <p className="blackText__paragraph">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
               quaerat culpa. Veritatis, iste? Mollitia nobis obcaecati sed
               culpa.
             </p>
-            <Link to="/about" className="btn-primary">
+            <Link to="/about" className="btn-primary transformation mt-6">
               read more
             </Link>
           </div>
@@ -57,11 +57,11 @@ const About = () => {
           <div className="">
             <div className="flex items-center mb-3">
               <div className="about-icon me-3">
-                <FaLaptop />
+                <FaLaptop className="i" />
               </div>
               <div className="single-about-content">
                 <h4 className="page-title">our mission</h4>
-                <p className="text-gray-900">
+                <p className="blackText__paragraph">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Adipisci in repellat nam ipsam quo unde recusandae libero
                   nostrum, ipsa expedita.
@@ -70,11 +70,11 @@ const About = () => {
             </div>
             <div class="single-about flex items-center mb-3">
               <div class="about-icon me-3">
-                <FaUser />
+                <FaUser className="i" />
               </div>
               <div className="single-about-content">
                 <h4 className="page-title">our Vission</h4>
-                <p className="text-gray-900">
+                <p className="blackText__paragraph">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Adipisci in repellat nam ipsam quo unde recusandae libero
                   nostrum, ipsa expedita.
@@ -83,11 +83,11 @@ const About = () => {
             </div>
             <div className="single-about flex items-center mb-3">
               <div className="about-icon me-3">
-                <FaPencil />
+                <FaPencil className="i" />
               </div>
               <div className="single-about-content">
                 <h4 className="page-title">our History</h4>
-                <p className="text-gray-900">
+                <p className="blackText__paragraph">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Adipisci in repellat nam ipsam quo unde recusandae libero
                   nostrum, ipsa expedita.

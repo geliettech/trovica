@@ -1,194 +1,28 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
- 
-@import "tailwindcss";
-
-/*  
-@theme {
-  --font-poppins: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* =========================
-   Base styles
-========================= 
-@layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-family: var(--font-poppins);
-  }
-
-  body {
-    margin: 0;
-    font-size: 18px;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  button {
-    cursor: pointer;
-    font-family: inherit;
-  }
-}
-
-/* =========================
-   Component styles
-========================= 
-@layer components {
-  .container {
-    @apply mx-auto px-4 md:px-6 lg:px-16 py-6;
-  }
-
-  /* ✅ standalone custom class (NOT used in @apply) 
-  .transformation {
-    @apply transform transition-transform duration-300 hover:scale-105;
-  }
-
-  /* ✅ FIXED: no custom class inside @apply 
-  .btn {
-    @apply px-6 py-2 rounded-lg font-medium transform transition-transform duration-300 hover:scale-105;
-  }
-
-  .btn-primary {
-    @apply bg-teal-700 text-white px-6 py-3 rounded-full text-sm md:text-base
-           hover:bg-teal-600
-           focus:outline-none focus-visible:ring-2 focus-visible:ring-white;
-  }
-
-  .nav__link {
-    @apply text-gray-700 font-medium
-           hover:text-gray-950
-           transform transition-transform duration-300 hover:scale-105
-           focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded;
-  }
-
-  .dashed__teal {
-    @apply after:content-[''] after:block after:w-12 after:h-1 after:bg-teal-600 after:mx-auto after:mt-2;
-  }
-
-  .whiteText__paragraph {
-    @apply text-gray-200 font-medium text-base leading-7;
-  }
-
-  .blackText__paragraph {
-    @apply text-gray-900;
-  }
-
-  .section-title {
-    @apply relative pb-12 text-center;
-  }
-
-  .section-title::before {
-    content: "";
-    @apply absolute w-1 h-24 bg-teal-600 left-1/2 -translate-x-1/2;
-  }
-
-  .section-title::after {
-    content: "";
-    @apply absolute w-16 h-1 bg-teal-600 left-1/2 bottom-0 -translate-x-1/2;
-  }
-
-  .section-title h4 {
-    @apply capitalize font-bold text-3xl text-gray-900;
-  }
-
-  .section-title h4 span {
-    @apply block font-normal text-base text-gray-500 mb-2;
-  }
-}
-
-/* =========================
-   Utility styles
-========================= 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-*/
-
-/*
-.section-title h4 span {
-  display: block;
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 6px;
-} */
-/* about, services, Team, Testimonials, and Blog section title stying end */
-/* .page-title {
-  position: relative;
-  text-transform: capitalize;
-  font-weight: 600;
-  font-size: 24px;
-  padding-bottom: 7px;
-  margin-bottom: 15px;
-} */
-/* underline on all class name with page-title styling (start) */
-/* .page-title::before {
-  content: "";
-  position: absolute;
-  width: 40px;
-  height: 2px;
-  background-color: #635cdb;
-  bottom: 0;
-} */
-/* underline on all class name with page-title styling (end) */
-/* .about-icon i {
-  border: 1px solid #635cdb;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: #635cdb;
-  transition: 0.3s;
-}
-.single-about:hover .about-icon i {
-  background-color: #635cdb;
-  color: #fff;
-} */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @import "tailwindcss";
 
-
- /* =========================
+/* =========================
    Theme variables
 ========================= */
 @theme {
-  --font-poppins: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-poppins: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
 }
 
 /* =========================
    Base styles
 ========================= */
 @layer base {
-  html,body, 
+  html,
+  body,
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-poppins);
   }
-  
+
   li {
     list-style: none;
   }
@@ -206,7 +40,6 @@
   .transformation {
     @apply transform transition-transform duration-300 hover:scale-105 cursor-pointer;
   }
- 
 
   .btn-primary {
     @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded-full text-sm md:text-base;
@@ -219,69 +52,44 @@
     @apply after:content-[''] after:block after:w-12 after:h-1 after:bg-teal-600 after:mx-auto after:mt-2;
   }
   .whiteText__paragraph {
-    @apply text-gray-200 font-medium text-base leading-7;
+    @apply text-white font-medium text-base leading-7;
   }
   .blackText__paragraph {
-    @apply text-gray-900 font-medium text-base leading-7;
+    @apply text-gray-700 font-medium text-base leading-7;
   }
   .section-title {
-    @apply relative pb-12  text-center;
+    @apply relative pb-12 flex justify-center;
   }
-    .section-title::before {
-    @apply content-[''] absolute w-1 h-24 bg-teal-600 left-1/2 transform -translate-x-1/2;
+  .section-title::before {
+    @apply content-[''] absolute w-0.5 h-24 bg-teal-600 left-1/2 transform -translate-x-1/2;
   }
 
   .section-title::after {
-    @apply content-[''] absolute w-16 h-1 bg-teal-600 left-1/2 bottom-2 transform -translate-x-1/2;
+    @apply content-[''] absolute w-16 h-0.5 bg-teal-600 left-1/2 bottom-4 transform -translate-x-1/2 mb-3;
   }
   .section-title h4 {
-    @apply capitalize font-bold text-3xl;
+    @apply capitalize font-bold text-3xl flex flex-col items-end;
+  }
+    .section-title p {
+    @apply flex items-start w-lg;
   }
   .section-title h4 span {
-    @apply inline-block capitalize font-normal text-base mb-3;
+    @apply block capitalize font-normal text-base;
+  }
+  .page-title {
+    @apply relative capitalize font-semibold text-xl pb-2 mb-4;
+  }
+  .page-title::before {
+    @apply content-[''] absolute w-16 h-1 bg-teal-600 bottom-0;
+  }
+  .about-icon .i {
+    @apply border border-teal-700 w-10 h-10 text-center leading-10 rounded-full text-teal-700 transition duration-300;
+  }
+  .single-about:hover .about-icon i {
+    @apply bg-teal-700 text-white;
   }
 }
 
-/*
-.section-title h4 span {
-  display: block;
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 6px;
-} */
-/* about, services, Team, Testimonials, and Blog section title stying end */
-/* .page-title {
-  position: relative;
-  text-transform: capitalize;
-  font-weight: 600;
-  font-size: 24px;
-  padding-bottom: 7px;
-  margin-bottom: 15px;
-} */
-/* underline on all class name with page-title styling (start) */
-/* .page-title::before {
-  content: "";
-  position: absolute;
-  width: 40px;
-  height: 2px;
-  background-color: #635cdb;
-  bottom: 0;
-} */
-/* underline on all class name with page-title styling (end) */
-/* .about-icon i {
-  border: 1px solid #635cdb;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: #635cdb;
-  transition: 0.3s;
-}
-.single-about:hover .about-icon i {
-  background-color: #635cdb;
-  color: #fff;
-} */
 /* =========================
    Utility styles
 ========================= */
