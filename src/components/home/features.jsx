@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 const faqs = [
   {
     title: "What services do you offer?",
@@ -45,21 +44,19 @@ const Features = () => {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
           {/* FAQ SECTION */}
           <div>
-            <h4 className="page-title text-white">
-              FAQ
-            </h4>
+            <h4 className="page-title text-white">FAQ</h4>
 
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border border-gray-200 rounded-lg overflow-hidden bg-white"
+                  className="border border-teal-200 rounded-lg overflow-hidden bg-teal-600"
                 >
                   <button
                     onClick={() =>
                       setActiveIndex(activeIndex === index ? null : index)
                     }
-                    className="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-gray-800"
+                    className="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-white"
                   >
                     {faq.title}
                     <span className="text-xl">
@@ -68,7 +65,7 @@ const Features = () => {
                   </button>
 
                   {activeIndex === index && (
-                    <div className="px-6 pb-4 text-gray-600 text-sm leading-relaxed">
+                    <div className="px-6 pb-4 text-gray-700 text-sm leading-relaxed bg-white">
                       {faq.content}
                     </div>
                   )}
@@ -79,27 +76,23 @@ const Features = () => {
 
           {/* SKILLS SECTION */}
           <div>
-            <h4 className="page-title text-white">
-              Our Skills
-            </h4>
+            <h4 className="page-title text-white">Our Skills</h4>
 
             <div className="space-y-5">
               {skills.map((skill, index) => (
                 <div key={index}>
-                  <div className="flex justify-between mb-1">
-                    <h5 className="font-medium capitalize text-gray-800">
-                      {skill.name}
-                    </h5>
-                    <span className="text-sm text-gray-600">
-                      {skill.value}%
-                    </span>
-                  </div>
+                  <h5 className="font-medium capitalize text-white mb-1">
+                    {skill.name}
+                  </h5>
 
-                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="relative w-full h-6 bg-white rounded overflow-hidden">
                     <div
-                      className="h-full bg-blue-600 transition-all duration-700"
+                      className="h-full bg-teal-600 transition-all duration-700"
                       style={{ width: `${skill.value}%` }}
                     />
+                    <span className="absolute right-1/2 top-1/2 -translate-y-1/2 text-xs text-white font-semibold">
+                      {skill.value}%
+                    </span>
                   </div>
                 </div>
               ))}

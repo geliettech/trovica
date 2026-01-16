@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const Logo = () => {
   return (
-     <Link className="nav__link text-2xl md:text-3xl font-semibold uppercase" to="/">Trovica</Link>
+     <Link className="text-gray-700 text-2xl font-bold uppercase" to="/">Trovica</Link>
   );
 };
 

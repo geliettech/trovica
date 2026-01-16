@@ -159,74 +159,38 @@
 // export default SingleBlogPage;
 import React from "react";
 import { useParams, Link } from "react-router";
-
-const blogs = [
-  {
-    id: "1",
-    title: "The Future of Responsive Design",
-    date: "20 June",
-    year: "2025",
-    img: "img/blog/blog1.jpg",
-    content: [
-      "In today’s digital world, responsive design is essential to reach audiences on all devices.",
-      "Our team creates websites that adjust seamlessly from desktops to mobile devices.",
-      "Using modern frameworks and best practices, we develop visually appealing websites optimized for performance and SEO.",
-      "Our approach focuses on clean code, fast loading times, and intuitive navigation.",
-      "We combine creative design with technical expertise to deliver websites that reflect your brand."
-    ],
-  },
-  {
-    id: "2",
-    title: "Creative Branding Tips",
-    date: "15 July",
-    year: "2025",
-    img: "img/blog/blog2.jpg",
-    content: [
-      "Branding is more than a logo—it’s the identity of your business.",
-      "We help businesses develop memorable visual identities.",
-      "From logos to color schemes, we create cohesive branding that resonates with your audience.",
-      "Our strategies ensure your brand stands out in a competitive market.",
-      "Strong branding improves recognition and customer trust."
-    ],
-  },
-  {
-    id: "3",
-    title: "Modern Web Development Trends",
-    date: "10 August",
-    year: "2025",
-    img: "img/blog/blog3.jpg",
-    content: [
-      "Web development is constantly evolving.",
-      "We stay updated with the latest trends to build interactive, user-friendly websites.",
-      "From progressive web apps to responsive frameworks, we implement modern solutions.",
-      "Optimized performance and UX are our top priorities.",
-      "Our websites are designed to convert visitors into loyal customers."
-    ],
-  },
-];
+import Blogs from "./blogData";
 
 const SingleBlogPage = () => {
   const { id } = useParams();
-  const blog = blogs.find((b) => b.id === id);
+  const blog = Blogs.find((blog) => blog.id === Number(id));
 
-  if (!blog) {
-    return <p className="text-center py-24 text-red-500">Blog not found!</p>;
-  }
+  if (!blog) return <p>Blog not found</p>;
 
   return (
-    <section className="pt-24 pb-24 bg-gray-50">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8">
+    <section className="py-24 bg-gray-50">
+      <div className="container grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Main content */}
         <div className="md:col-span-8">
-          <h2 className="text-2xl font-bold mb-4">{blog.title}</h2>
-          <img src={blog.img} alt={blog.title} className="w-full rounded mb-4" />
-          {blog.content.map((para, idx) => (
-            <p key={idx} className="mb-4 text-gray-700">{para}</p>
-          ))}
+          <div className="single-blog move-left">
+            <img
+              src={blog.img}
+              alt={blog.title}
+              loading="lazy"
+              className="w-full rounded mb-4"
+            />
+            <h1>{blog.title}</h1>
+            <span>
+              {blog.date} {blog.year}
+            </span>
+            {blog.content.map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
+          </div>
 
           <Link
-            to="/"
-            className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+            to="/blog"
+            className="inline-block mt-6 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition"
           >
             Back to Blogs
           </Link>
@@ -234,14 +198,34 @@ const SingleBlogPage = () => {
 
         {/* Sidebar */}
         <div className="md:col-span-4">
-          <div className="mb-8">
+          <div className="bg-white p-6 rounded shadow">
             <h4 className="text-xl font-semibold mb-4">Categories</h4>
             <ul className="space-y-2">
-              <li><Link to="#" className="hover:text-blue-500">Web Design</Link></li>
-              <li><Link to="#" className="hover:text-blue-500">Web Development</Link></li>
-              <li><Link to="#" className="hover:text-blue-500">Software Development</Link></li>
-              <li><Link to="#" className="hover:text-blue-500">Digital Marketing</Link></li>
-              <li><Link to="#" className="hover:text-blue-500">Graphics Design</Link></li>
+              <li>
+                <Link to="#" className="hover:text-teal-600">
+                  Web Design
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-teal-600">
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-teal-600">
+                  Software Development
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-teal-600">
+                  Digital Marketing
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-teal-600">
+                  Graphics Design
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

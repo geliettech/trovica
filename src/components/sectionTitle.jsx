@@ -10,12 +10,12 @@ const SectionTitle = ({titleQuest, title, desc}) => {
             </h4>
           </div>
           {/* Vertical line */}
-          <span className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600" />
+          <span className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600" />
 
           {/* Horizontal line */}
-          <span className="absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600" />
+          <span className="hidden lg:block absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600" />
           <div>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="blackText__paragraph">
              {desc}
             </p>
           </div>

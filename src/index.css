@@ -43,32 +43,26 @@
   }
 
   .btn-primary {
-    @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded-full text-sm md:text-base;
+    @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded-full text-sm md:text-base inline-block;
   }
 
   .nav__link {
-    @apply font-medium text-gray-700 text-base hover:text-gray-950;
+    @apply font-medium text-gray-700 text-sm hover:text-gray-950;
   }
   .dashed__teal {
     @apply after:content-[''] after:block after:w-12 after:h-0.5 after:bg-teal-600 after:mx-auto after:mt-2;
   }
   .whiteText__paragraph {
-    @apply text-white font-medium text-base leading-7;
+    @apply text-white font-normal text-base leading-relaxed;
   }
   .blackText__paragraph {
-    @apply text-gray-700 font-medium text-base leading-7;
+    @apply text-gray-600 font-normal text-base leading-relaxed;
   }
   .page-title {
-    @apply relative font-semibold text-xl pb-2 text-gray-700 uppercase tracking-widest mb-4;
+    @apply relative font-semibold text-xl pb-2 text-gray-700 capitalize mb-4;
   }
   .page-title::before {
     @apply content-[''] absolute w-10 h-0.5 bg-teal-600 bottom-0;
-  }
-  .about-icon .i {
-    @apply border border-teal-700 w-10 h-10 text-center leading-10 rounded-full text-teal-700 transition duration-300;
-  }
-  .single-about:hover .about-icon i {
-    @apply hover:bg-teal-700 hover:text-white;
   }
 }
 

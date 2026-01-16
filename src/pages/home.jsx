@@ -1,4 +1,4 @@
-import HeroSlider from "../components/home/hero";
+import HeroSection from "../components/home/hero";
 import About from "../components/home/About";
 import Features from "../components/home/features";
 import Services from "../components/home/services";
@@ -10,7 +10,7 @@ import BlogSection from "../components/home/blog";
 const Home = () => {
   return (
     <div className="">
-      <HeroSlider />
+      <HeroSection />
       <About />
       <Features />
       <Services />

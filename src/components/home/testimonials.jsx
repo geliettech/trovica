@@ -1,4 +1,3 @@
-// TestimonialsSlider.tsx
 import React, { useState, useEffect } from "react";
 
 const slides = [
@@ -6,7 +5,7 @@ const slides = [
     image: "img/testimonials/01.png",
     name: "John Doe",
     role: "CEO, TechSolutions",
-    text: "Halim Agency transformed our website into a modern, responsive platform. Their attention to detail in web design and development exceeded our expectations.",
+    text: "Trovica Agency transformed our website into a modern, responsive platform. Their attention to detail in web design and development exceeded our expectations.",
   },
   {
     image: "img/testimonials/02.png",
@@ -24,7 +23,7 @@ const slides = [
     image: "img/testimonials/04.png",
     name: "Bob Brown",
     role: "Product Manager, NextGen Apps",
-    text: "From web development to responsive design, Halim Agency provided top-notch services that improved our user experience and engagement.",
+    text: "From web development to responsive design, Trovica Agency provided top-notch services that improved our user experience and engagement.",
   },
 ];
 
@@ -38,51 +37,81 @@ const TestimonialsSlider = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const visibleSlides = [
+    slides[(current - 1 + slides.length) % slides.length],
+    slides[current],
+    slides[(current + 1) % slides.length],
+  ];
+
   return (
     <section
-      className="pt-24 pb-24 bg-cover bg-center"
+      className="py-24 bg-cover bg-center relative"
       style={{ backgroundImage: "url('img/testimonials/testi_back.jpg')" }}
     >
-      <div className="container mx-auto px-4">
-        {/* Section Title */}
-        <div className="flex flex-col xl:flex-row items-center mb-12">
-          <div className="xl:w-1/2 text-right xl:pr-8 mb-4 xl:mb-0">
-            <h4 className="text-2xl font-semibold">
-              <span className="text-pink-500">Who we are?</span> What clients say
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gray-900/60" aria-hidden="true" />
+
+      <div className="container relative z-10">
+        {/* ======================= testimonials Title ==================== */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative">
+          <div className="xl:text-right">
+            <h4 className="text-3xl font-semibold uppercase text-white">
+              <span className="block text-sm text-teal-600 mb-2">
+                Who We Are?
+              </span>
+              What clients say
             </h4>
           </div>
-          <div className="xl:w-1/2 xl:pl-8">
-            <p className="text-gray-700">
-              Halim Agency specializes in web design, development, responsive layouts, creative design, graphics, and branding. Here's what our clients have to say about their experience working with us.
+          {/* Vertical line */}
+          <span className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600" />
+
+          {/* Horizontal line */}
+          <span className="hidden lg:block absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600" />
+          <div>
+            <p className="whiteText__paragraph">
+              Trovica Agency specializes in web design, development, responsive
+              layouts, creative design, graphics, and branding. Here's what our
+              clients have to say about their experience working with us.
             </p>
           </div>
         </div>
-
         {/* Slider */}
-        <div className="flex flex-col items-center text-center p-8">
-          <img
-            src={slides[current].image}
-            alt={slides[current].name}
-            className="w-24 h-24 rounded-full mb-4 object-cover"
-          />
-          <p className="text-gray-600 mb-4">{slides[current].text}</p>
-          <h4 className="text-lg font-semibold">
-            {slides[current].name}{" "}
-            <span className="block text-sm text-gray-500">{slides[current].role}</span>
-          </h4>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          {visibleSlides.map((slide, index) => {
+            const isActive = index === 1; // middle card
 
-          {/* Dots */}
-          <div className="flex mt-6 space-x-2">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                className={`w-3 h-3 rounded-full ${
-                  idx === current ? "bg-pink-500" : "bg-gray-300"
-                }`}
-                onClick={() => setCurrent(idx)}
-              />
-            ))}
-          </div>
+            return (
+              <div
+                key={index}
+                className={`p-8 rounded-lg text-center transition-all duration-500
+          ${
+            isActive
+              ? "bg-teal-600 text-white scale-105 shadow-xl"
+              : "bg-white/10 backdrop-blur-sm text-gray-100"
+          }
+        `}
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.name}
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white/30"
+                />
+
+                <p className="mb-4 text-sm leading-relaxed">{slide.text}</p>
+
+                <h4 className="text-lg font-semibold">
+                  {slide.name}
+                  <span
+                    className={`block text-sm ${
+                      isActive ? "text-white/90" : "text-gray-300"
+                    }`}
+                  >
+                    {slide.role}
+                  </span>
+                </h4>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

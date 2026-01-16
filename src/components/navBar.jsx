@@ -1,91 +1,98 @@
-import { useState } from "react";
-import { NavLink } from "react-router";
-import { FaBars } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { FaChevronDown, FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import Logo from "./logo";
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  {
+    name: "Gallery",
+    dropdown: [
+      { name: "Gallery 1", href: "#" },
+      { name: "Gallery 2", href: "#" },
+      { name: "Gallery 3", href: "#" },
+      { name: "Gallery 4", href: "#" },
+    ],
+  },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
 
 const NavBar = () => {
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activePath, setActivePath] = useState("/");
 
-  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    setActivePath(window.location.pathname); // Set current active path on load
+  }, []);
 
-  const getNavLinkClasses = ({ isActive, name }) => {
-    // Contact button styles
-    if (name === "Contact") {
-      return `py-2 px-4 text-base
-      ${
-        isActive
-          ? "font-medium bg-teal-600/80 text-white rounded-lg transformation"
-          : "btn-primary transformation"
-      }`;
-    }
-
-    // Default nav styles
-    return `text-base
-    ${
-      isActive
-        ? "font-medium text-teal-700 border-b-2 border-teal-700 rounded-lg transform transition-transform duration-300 scale-105 cursor-pointer px-1"
-        : "nav__link transformation"
-    }`;
-  };
+  const isActive = (href) => href === activePath;
 
   return (
     <>
-      {/* Desktop Menu */}
-      <div className="hidden lg:flex items-center gap-8">
-        {navItems.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.href}
-            className={({ isActive }) =>
-              getNavLinkClasses({ isActive, name: item.name })
-            }
-            end={item.href === "/"}
-          >
-            {item.name}
-          </NavLink>
-        ))}
-      </div>
-
       {/* Mobile Toggle */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden text-gray-700 text-2xl focus:outline-none transformation"
-        aria-label="Toggle Menu"
+        className="lg:hidden text-xl text-gray-700 transformation"
+        onClick={() => setMenuOpen(!menuOpen)}
       >
-        {isOpen ? <MdClose /> : <FaBars />}
+        {menuOpen ? <MdClose /> : <FaBars />}
       </button>
 
-      {/* Mobile Menu */}
-      <div
-        className={`lg:hidden absolute top-full right-0 w-1/2 bg-white shadow-md ${
-          isOpen ? "block" : "hidden"
-        }`} aria-label="Toggle menu"
-        aria-expanded={isOpen}
+      {/* Menu */}
+      <ul
+        className={`${
+          menuOpen ? "block" : "hidden"
+        } lg:flex flex-col lg:flex-row lg:items-center gap-6 absolute lg:static top-full right-0 w-1/2 lg:w-auto bg-white lg:bg-transparent shadow lg:shadow-none z-1000`}
       >
-        <div className="flex flex-col items-center gap-6 py-6">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.href}
-              className={({ isActive }) =>
-                getNavLinkClasses({ isActive, name: item.name })
-              }
-              end={item.href === "/"}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.name}
-            </NavLink>
-          ))}
-        </div>
-      </div>
+        {navItems.map((item, idx) =>
+          item.dropdown ? (
+            <li key={idx} className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className={`flex items-center gap-1 w-full lg:w-auto px-4 py-2 lg:px-0 lg:py-0 ${
+                  isActive(item.href)
+                    ? "text-teal-600 font-semibold"
+                    : "nav__link transformation"
+                }`}
+              >
+                {item.name} <FaChevronDown className="text-xs" />
+              </button>
+
+              {dropdownOpen && (
+                <ul className="absolute left-0 lg:mt-2 mt-0 lg:top-full bg-white shadow rounded-md w-40 text-sm z-1000">
+                  {item.dropdown.map((drop, i) => (
+                    <li key={i}>
+                      <a
+                        href={drop.href}
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        {drop.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ) : (
+            <li key={idx}>
+              <a
+                href={item.href}
+                className={`block px-4 py-2 lg:px-0 lg:py-0  ${
+                  isActive(item.href)
+                    ? "text-teal-600 font-semibold"
+                    : "nav__link transformation"
+                }`}
+              >
+                {item.name}
+              </a>
+            </li>
+          )
+        )}
+      </ul>
     </>
   );
 };
