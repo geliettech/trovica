@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 
+
 /* =========================
    Theme variables
 ========================= */
@@ -58,16 +59,16 @@
     @apply text-gray-700 font-medium text-base leading-7;
   }
   .page-title {
-    @apply relative capitalize font-semibold text-xl pb-2 mb-4;
+    @apply relative font-semibold text-xl pb-2 text-gray-700 uppercase tracking-widest mb-4;
   }
   .page-title::before {
-    @apply content-[''] absolute w-16 h-0.5 bg-teal-600 bottom-0;
+    @apply content-[''] absolute w-10 h-0.5 bg-teal-600 bottom-0;
   }
   .about-icon .i {
     @apply border border-teal-700 w-10 h-10 text-center leading-10 rounded-full text-teal-700 transition duration-300;
   }
   .single-about:hover .about-icon i {
-    @apply bg-teal-700 text-white;
+    @apply hover:bg-teal-700 hover:text-white;
   }
 }
 

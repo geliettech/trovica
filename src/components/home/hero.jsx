@@ -1,112 +1,204 @@
+// import { useEffect, useState } from "react";
+// import { Link } from "react-router";
+// import { AnimatePresence, motion } from "framer-motion";
+
+
+// const slides = [
+//   {
+//     text: "We Are Trovica",
+//     heading: "Creative Digital Agency",
+//     paragraph:
+//       "We design and build powerful digital experiences that help brands connect, grow, and stand out online through strategy, creativity, and technology.",
+//     buttonText: "Get Started",
+//     image: "img/slider/slide-1.jpg",
+//   },
+//   {
+//     text: "Design. Develop. Brand.",
+//     heading: "Web & Brand Solutions",
+//     paragraph:
+//       "From web design and development to branding and creative design, we craft visually compelling and responsive solutions tailored to your business goals.",
+//     buttonText: "View Our Work",
+//     image: "img/slider/slide-2.jpg",
+//   },
+//   {
+//     text: "Your Digital Partner",
+//     heading: "Building Brands Online",
+//     paragraph:
+//       "We help businesses create strong digital identities through clean design, scalable development, and strategic branding that drives real results.",
+//     buttonText: "Contact Us",
+//     image: "img/slider/slide-3.jpg",
+//   },
+// ];
+
+// const Hero = () => {
+//   const [slideIndex, setSlideIndex] = useState(0);
+
+//   // Auto slide
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setSlideIndex((prev) => (prev + 1) % slides.length);
+//     }, 5000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   const currentSlide = slides[slideIndex];
+
+//   return (
+//     <section
+//       className="relative min-h-screen bg-cover bg-center bg-no-repeat"
+//       style={{
+//         backgroundImage: `url(${currentSlide.image})`,
+//       }}
+//       role="region"
+//       aria-label="Hero section"
+//     >
+//       {/* Overlay */}
+//       <div className="absolute inset-0 bg-gray-950/75" aria-hidden="true" />
+
+//       {/* Content */}
+//       <AnimatePresence mode="wait">
+//         <motion.div
+//           key={slideIndex}
+//           initial={{ opacity: 0, y: 40 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           exit={{ opacity: 0, y: -40 }}
+//           transition={{ duration: 0.6 }}
+//           className="relative z-10 min-h-screen flex flex-col justify-center items-center text-center gap-6 text-white px-4"
+//         >
+//           <h4 className="text-white text-sm md:text-[1.5rem] uppercase tracking-wide font-medium dashed__teal">
+//             {currentSlide.text}
+//           </h4>
+
+//           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+//             {currentSlide.heading}
+//           </h1>
+
+//           <p className="whiteText__paragraph max-w-2xl">
+//             {currentSlide.paragraph}
+//           </p>
+//           <Link
+//             to="/contact"
+//             className="inline-flex items-center justify-center uppercase btn-primary rounded transformation"
+//           >
+//             {currentSlide.buttonText}
+//           </Link>
+//         </motion.div>
+//       </AnimatePresence>
+
+//       {/* Dots Navigation */}
+//       <div
+//         className="hidden sm:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-20"
+//         aria-label="Hero slide navigation"
+//       >
+//         {slides.map((_, index) => (
+//           <span
+//             key={index}
+//             onClick={() => setSlideIndex(index)}
+//             className={`w-4 h-4 cursor-pointer transition ${
+//               index === slideIndex
+//                 ? "bg-teal-600"
+//                 : "bg-gray-400 hover:bg-white"
+//             }`}
+//             role="tab"
+//             aria-selected={index === slideIndex}
+//             aria-label={`Go to slide ${index + 1}`}
+//           ></span>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Hero;
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
-import { AnimatePresence, motion } from "framer-motion";
 
 const slides = [
   {
-    text: "We are Trovica",
-    heading: "Building Digital Experiences",
-    paragraph:
-      "We craft modern, user-focused digital solutions that help brands stand out. From concept to launch, we turn ideas into impactful products.",
-    buttonText: "Get Started",
     image: "img/slider/slide-1.jpg",
+    subtitle: "We are Halim",
+    title: "We Are Digital Agency",
+    desc: "We create modern digital experiences that help brands grow, connect, and stand out online.",
   },
   {
-    text: "Creative & Strategic",
-    heading: "Designing Brands Solutions",
-    paragraph:
-      "Our team blends creativity with strategy to design websites and applications that engage users, boost visibility, and drive business growth.",
-    buttonText: "View Our Work",
     image: "img/slider/slide-2.jpg",
+    subtitle: "We are Halim",
+    title: "Creative Digital Solutions",
+    desc: "From design to development, we deliver innovative solutions built for performance and impact.",
   },
   {
-    text: "Your Digital Partner",
-    heading: "Innovative Web Solutions",
-    paragraph:
-      "We help businesses transform their online presence through clean design, scalable technology, and results-driven digital strategies.",
-    buttonText: "Contact Us",
     image: "img/slider/slide-3.jpg",
+    subtitle: "We are Halim",
+    title: "Building Brands Online",
+    desc: "We help businesses establish strong digital identities through creativity and strategy.",
   },
 ];
 
-const Hero = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
+const HeroSlider = () => {
+  const [current, setCurrent] = useState(0);
 
-  // Auto slide
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % slides.length);
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
-  const currentSlide = slides[slideIndex];
-
   return (
-    <section
-      className="relative min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${currentSlide.image})`,
-      }}
-      role="region"
-      aria-label="Hero section"
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gray-950/75" aria-hidden="true" />
-
-      {/* Content */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={slideIndex}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 min-h-screen flex flex-col justify-center items-center text-center gap-6 text-white px-4"
+    <section className="relative h-[90vh] overflow-hidden">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === current ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+          style={{
+            backgroundImage: `url(${slide.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
-          <h4 className="text-white text-sm md:text-[1.5rem] uppercase tracking-wide font-medium dashed__teal">
-            {currentSlide.text}
-          </h4>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/50" />
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            {currentSlide.heading}
-          </h1>
+          {/* Content */}
+          <div className="relative h-full flex items-center justify-center text-center text-white px-6">
+            <div className="max-w-3xl">
+              <h4 className="uppercase tracking-widest text-sm mb-4">
+                {slide.subtitle}
+              </h4>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {slide.title}
+              </h1>
+              <p className="text-gray-200 mb-8 leading-relaxed">
+                {slide.desc}
+              </p>
+              <a
+                href="/contact"
+                className="inline-block px-8 py-3 bg-teal-600 hover:bg-teal-700 transition rounded-md text-sm font-semibold"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
 
-          <p className="whiteText__paragraph max-w-2xl">
-            {currentSlide.paragraph}
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center uppercase btn-primary rounded transformation"
-          >
-            {currentSlide.buttonText}
-          </Link>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Dots Navigation */}
-      <div
-        className="hidden sm:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-20"
-        aria-label="Hero slide navigation"
-      >
+      {/* Dots */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
         {slides.map((_, index) => (
-          <span
+          <button
             key={index}
-            onClick={() => setSlideIndex(index)}
-            className={`w-4 h-4 cursor-pointer transition ${
-              index === slideIndex
-                ? "bg-teal-600"
-                : "bg-gray-400 hover:bg-white"
+            onClick={() => setCurrent(index)}
+            className={`h-3 w-3 rounded-full transition ${
+              current === index ? "bg-teal-500" : "bg-white/50"
             }`}
-            role="tab"
-            aria-selected={index === slideIndex}
-            aria-label={`Go to slide ${index + 1}`}
-          ></span>
+          />
         ))}
       </div>
     </section>
   );
 };
 
-export default Hero;
+export default HeroSlider;

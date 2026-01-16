@@ -39,7 +39,7 @@ const NavBar = () => {
   return (
     <>
       {/* Desktop Menu */}
-      <div className="hidden md:flex items-center gap-8">
+      <div className="hidden lg:flex items-center gap-8">
         {navItems.map((item) => (
           <NavLink
             key={item.name}
@@ -57,7 +57,7 @@ const NavBar = () => {
       {/* Mobile Toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden text-gray-700 text-2xl focus:outline-none transformation"
+        className="lg:hidden text-gray-700 text-2xl focus:outline-none transformation"
         aria-label="Toggle Menu"
       >
         {isOpen ? <MdClose /> : <FaBars />}
@@ -65,7 +65,7 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full right-0 w-1/2 bg-white shadow-md ${
+        className={`lg:hidden absolute top-full right-0 w-1/2 bg-white shadow-md ${
           isOpen ? "block" : "hidden"
         }`} aria-label="Toggle menu"
         aria-expanded={isOpen}
