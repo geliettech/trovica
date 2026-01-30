@@ -5,7 +5,7 @@ import Services from "../components/services";
 import Counter from "../components/home/counter";
 import Team from "../components/home/team";
 import TestimonialsSlider from "../components/home/testimonials";
-import BlogSection from "../components/home/blog";
+import BlogSection from "../components/blog";
 
 const Home = () => {
   return (

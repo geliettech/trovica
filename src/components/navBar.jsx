@@ -11,10 +11,10 @@ const navItems = [
   {
     name: "Gallery",
     dropdown: [
-      { name: "Gallery 1", href: "#" },
-      { name: "Gallery 2", href: "#" },
-      { name: "Gallery 3", href: "#" },
-      { name: "Gallery 4", href: "#" },
+      { name: "Brand Identity", href: "/gallery-brand-identity" },
+      { name: "Business & Corporate", href: "/gallery-business" },
+      { name: "Marketing Campaigns", href: "/gallery-marketing" },
+      { name: "Creative Concepts", href: "/gallery-creative" },
     ],
   },
   { name: "Blog", href: "/blog" },

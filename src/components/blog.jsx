@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import SectionTitle from "../sectionTitle";
+import SectionTitle from "./sectionTitle";
 import Blogs from "./blogData"
 
 

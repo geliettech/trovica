@@ -1,6 +1,6 @@
-import blog1 from "../../assets/img/blog/blog1.jpg";
-import blog2 from "../../assets/img/blog/blog2.jpg";
-import blog3 from "../../assets/img/blog/blog3.jpg";
+import blog1 from "../assets/img/blog/blog1.jpg";
+import blog2 from "../assets/img/blog/blog2.jpg";
+import blog3 from "../assets/img/blog/blog3.jpg";
 
 const Blogs = [
   {
