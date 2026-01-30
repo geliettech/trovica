@@ -6,7 +6,7 @@ import {
   FaCreativeCommonsSa,
   FaFlag,
 } from "react-icons/fa";
-import SectionTitle from "../sectionTitle";
+import SectionTitle from "./sectionTitle";
 
 const services = [
   {

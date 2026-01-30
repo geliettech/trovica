@@ -1,5 +1,5 @@
 import { FaLaptop, FaUser, FaPencilAlt } from "react-icons/fa";
-import SectionTitle from "../sectionTitle";
+import SectionTitle from "./sectionTitle";
 import { Link } from "react-router";
 import AboutCard from "./aboutCard";
 

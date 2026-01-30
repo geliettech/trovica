@@ -16,13 +16,13 @@ const TopBar = () => {
           {/* Left: Contact Info */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              to="mailto:info@halim.com"
+              to="mailto:info@trovicagency.com"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 transformation"
             >
               <FaEnvelope />
-              info@trovica.com
+             info@trovicagency.com
             </Link>
 
             <Link

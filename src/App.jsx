@@ -3,8 +3,8 @@ import TopBar from "./components/topBar";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./pages/home";
-import About from "./pages/about";
-import Services from "./pages/services";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
 import Portfolio from "./pages/portfolio";
 import Gallery from "./pages/gallery";
 import Blog from "./pages/blog";
@@ -21,8 +21,8 @@ function App() {
     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/blog" element={<Blog />} />
