@@ -2,34 +2,38 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 
+
 const slides = [
   {
-    text: "We are Trovica",
-    heading: "Building Digital Experiences",
+    text: "We Are Trovica",
+    heading: "Creative Digital Agency",
     paragraph:
-      "We craft modern, user-focused digital solutions that help brands stand out. From concept to launch, we turn ideas into impactful products.",
+      "We design and build powerful digital experiences that help brands connect, grow, and stand out online through strategy, creativity, and technology.",
     buttonText: "Get Started",
     image: "img/slider/slide-1.jpg",
+    to: "/contact",
   },
   {
-    text: "Creative & Strategic",
-    heading: "Designing Brands Solutions",
+    text: "Design. Develop. Brand.",
+    heading: "Web & Brand Solutions",
     paragraph:
-      "Our team blends creativity with strategy to design websites and applications that engage users, boost visibility, and drive business growth.",
+      "From web design and development to branding and creative design, we craft visually compelling and responsive solutions tailored to your business goals.",
     buttonText: "View Our Work",
     image: "img/slider/slide-2.jpg",
+    to: "/services",
   },
   {
     text: "Your Digital Partner",
-    heading: "Innovative Web Solutions",
+    heading: "Building Brands Online",
     paragraph:
-      "We help businesses transform their online presence through clean design, scalable technology, and results-driven digital strategies.",
+      "We help businesses create strong digital identities through clean design, scalable development, and strategic branding that drives real results.",
     buttonText: "Contact Us",
     image: "img/slider/slide-3.jpg",
+    to: "/contact",
   },
 ];
 
-const Hero = () => {
+const HeroSection = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   // Auto slide
@@ -45,7 +49,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-cover bg-center bg-no-repeat"
+      className="relative min-h-[90vh] bg-cover"
       style={{
         backgroundImage: `url(${currentSlide.image})`,
       }}
@@ -53,7 +57,7 @@ const Hero = () => {
       aria-label="Hero section"
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gray-950/75" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gray-900/80" aria-hidden="true" />
 
       {/* Content */}
       <AnimatePresence mode="wait">
@@ -63,7 +67,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 min-h-screen flex flex-col justify-center items-center text-center gap-6 text-white px-4"
+          className="relative z-10 min-h-[90vh] flex flex-col justify-center items-center text-center gap-6 text-white px-4"
         >
           <h4 className="text-white text-sm md:text-[1.5rem] uppercase tracking-wide font-medium dashed__teal">
             {currentSlide.text}
@@ -77,7 +81,7 @@ const Hero = () => {
             {currentSlide.paragraph}
           </p>
           <Link
-            to="/contact"
+            to={currentSlide.to}
             className="inline-flex items-center justify-center uppercase btn-primary rounded transformation"
           >
             {currentSlide.buttonText}
@@ -109,4 +113,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroSection;
