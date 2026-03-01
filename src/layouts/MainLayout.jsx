@@ -44,9 +44,6 @@ const MainLayout = () => {
           </div>
 
           <div className="md:w-1/2 text-center md:text-right">
-            {/* <Link to="/contact" className="btn-primary transformation">
-              Contact Us
-            </Link> */}
             <Button text="Contact Us" to="/contact" />
           </div>
         </div>
