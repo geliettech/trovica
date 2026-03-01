@@ -43,7 +43,7 @@
   }
 
   .btn-primary {
-    @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded-full text-sm md:text-base inline-block;
+    @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded text-sm md:text-base inline-flex items-center justify-center  uppercase;
   }
 
   .nav__link {
