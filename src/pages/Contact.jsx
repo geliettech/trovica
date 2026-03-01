@@ -97,7 +97,7 @@ const ContactPage = () => {
 
               {/* Map */}
               <div className="lg:col-span-5">
-                <div className="w-full h-[350px] rounded overflow-hidden">
+                <div className="w-full h-87.5 rounded overflow-hidden">
                   <iframe
                     title="Google Map"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d424146.7078406794!2d150.60231041745502!3d-33.84723482046918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2sng!4v1765986337197!5m2!1sen!2sng"

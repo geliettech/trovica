@@ -1,10 +1,10 @@
-const SectionTitle = ({titleQuest, title, desc}) => {
+const SectionHeader = ({quest, title, desc}) => {
   return (
         <div className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative">
           <div className="xl:text-right">
             <h4 className="text-3xl font-semibold uppercase text-gray-700">
               <span className="block text-sm text-teal-600 mb-2">
-                {titleQuest}
+                {quest}
               </span>
               {title}
             </h4>
@@ -23,4 +23,4 @@ const SectionTitle = ({titleQuest, title, desc}) => {
   );
 };
 
-export default SectionTitle;
+export default SectionHeader;

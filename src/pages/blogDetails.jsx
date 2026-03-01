@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router";
-import Blogs from "./blogData";
+import Blogs from "../data/blog";
 
 // Related blog card component
 const RelatedBlogCard = ({ imgSrc, title, date, year, description, link }) => (
@@ -58,7 +58,6 @@ const SingleBlogPage = () => {
   const blog = Blogs.find((blog) => blog.id === Number(id));
 
   if (!blog) return <p>Blog not found</p>;
-
 
   const latestPosts = [
     {
