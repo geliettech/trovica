@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaChevronDown, FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import Logo from "./logo";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -90,7 +89,7 @@ const NavBar = () => {
                 {item.name}
               </a>
             </li>
-          )
+          ),
         )}
       </ul>
     </>

@@ -10,7 +10,7 @@ const RelatedBlogCard = ({ imgSrc, title, date, year, description, link }) => (
         <img src={blog.img} alt={blog.title} className="w-full" />
         <div className="p-4">
           <h4 className="text-xl font-semibold mb-2">
-            <Link to={`/blog/${blog.id}`} className="hover:text-teal-500">
+            <Link to={`/blog/${blog.id}`} className="hover:text-teal-500 text-gray-700">
               {blog.title}
             </Link>
           </h4>
@@ -35,16 +35,16 @@ const RelatedBlogCard = ({ imgSrc, title, date, year, description, link }) => (
 const Sidebar = ({ title, items }) => {
   return (
     <aside className="mb-8 bg-white p-6 rounded shadow">
-      <h4 className="text-xl font-semibold mb-4">{title}</h4>
+      <h4 className="text-xl font-semibold mb-4 text-gray-700">{title}</h4>
       <ul className="space-y-4">
         {items.map((item, idx) => (
           <li key={idx} className="flex flex-col">
-            <a href={item.link} className="hover:text-teal-600">
+            <a href={item.link} className="hover:text-teal-600 text-gray-700">
               {item.icon && <i className={item.icon}></i>}
               {item.label}
             </a>
             {item.date && (
-              <span className="text-gray-500 text-sm">{item.date}</span>
+              <span className="text-gray-400 text-sm">{item.date}</span>
             )}
           </li>
         ))}
@@ -119,24 +119,23 @@ const SingleBlogPage = () => {
                 loading="lazy"
                 className="w-full rounded mb-4"
               />
-              <h1>{blog.title}</h1>
-              <span>
+              <h1 className="text-gray-700 text-xl font-medium uppercase">{blog.title}</h1>
+              <span className="text-gray-400 text-sm leading-12">
                 {blog.date} {blog.year}
               </span>
               {blog.content.map((text, index) => (
-                <p key={index}>{text}</p>
+                <p key={index} className="blackText__paragraph">{text}</p>
               ))}
             </div>
+
             {/* Related posts */}
             <div className="mt-16 mb-8">
-              <h3 className="text-xl font-semibold mb-6">Related Posts</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <RelatedBlogCard />
-              </div>
+              <h3 className="text-gray-700 text-xl font-semibold mb-6 uppercase">Related Posts</h3>
+              <RelatedBlogCard />
             </div>
             {/* Comment form */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Leave a Reply</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-700">Leave a Reply</h3>
               <form className="flex flex-col gap-3">
                 <input
                   type="text"
@@ -155,7 +154,7 @@ const SingleBlogPage = () => {
                 ></textarea>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                  className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition"
                 >
                   Send Message
                 </button>

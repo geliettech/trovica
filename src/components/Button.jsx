@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { buttonHover } from "../animations/motion";
 
 const Button = ({
   text,
@@ -12,20 +14,14 @@ const Button = ({
       ? "btn-primary"
       : "border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white";
 
-  const finalClass = `${baseClass} transformation ${className}`.trim();
+  const finalClass = `${baseClass} transition-all ${className}`.trim();
 
-  if (to) {
-    return (
-      <Link to={to} className={finalClass} {...props}>
-        {text}
-      </Link>
-    );
-  }
+  const Component = to ? motion(Link) : motion.button;
 
   return (
-    <button className={finalClass} {...props}>
+    <Component to={to} className={finalClass} {...buttonHover} {...props}>
       {text}
-    </button>
+    </Component>
   );
 };
 

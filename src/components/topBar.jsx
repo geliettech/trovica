@@ -7,13 +7,20 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { staggerContainer, slideDown } from "../animations/motion";
 
 const TopBar = () => {
   return (
     <section className="bg-teal-500 text-gray-100 text-sm">
       <div className="container py-3">
-        <div className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3">
+        <motion.div className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3" variants={staggerContainer}
+  initial="hidden"
+  animate="visible">
           {/* Left: Contact Info */}
+          <motion.span variants={slideDown} initial="hidden" animate="visible">
+            🚀 Special Offer: Get 20% Off Your First Project
+          </motion.span>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="mailto:info@trovicagency.com"
@@ -22,7 +29,7 @@ const TopBar = () => {
               className="flex items-center gap-1 transformation"
             >
               <FaEnvelope />
-             info@trovicagency.com
+              info@trovicagency.com
             </Link>
 
             <Link
@@ -48,10 +55,10 @@ const TopBar = () => {
                 >
                   <Icon aria-hidden="true" />
                 </Link>
-              )
+              ),
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

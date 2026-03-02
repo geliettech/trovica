@@ -33,6 +33,7 @@ const Home = () => {
   }, []);
 
   const currentSlide = slides[slideIndex];
+const Blog = Blogs.slice(0, 3)
 
   return (
     <>
@@ -327,7 +328,7 @@ const Home = () => {
               desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
             />
             <div className="grid md:grid-cols-3 gap-8">
-              {Blogs.map((blog) => (
+              {Blog.map((blog) => (
                 <div
                   key={blog.id}
                   className="bg-white shadow rounded-lg overflow-hidden"

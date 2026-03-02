@@ -128,7 +128,7 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-200 pt-16">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div className="container grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Logo & About */}
         <div className="md:col-span-3 text-center md:text-left">
           <h4 className="text-2xl font-bold mb-2 text-white uppercase">
