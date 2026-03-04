@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import useScrollToTop from "../hooks/useScrollToTop";
 import Button from "../components/Button";
 import { pageVariants, pageTransition } from "../animations/motion";
-import { slideLeft, slideRight } from "../animations/motion";
 
 
 const MainLayout = () => {

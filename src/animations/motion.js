@@ -169,15 +169,15 @@ export const mobileMenu = {
 // HOVER EFFECTS
 // ===============================
 
-export const iconHover = {
-  whileHover: {
-    scale: 1.2,
-    rotate: 5,
-    transition: { type: "spring", stiffness: 300 },
-  },
-};
+// export const iconHover = {
+//   whileHover: {
+//     scale: 1.2,
+//     rotate: 5,
+//     transition: { type: "spring", stiffness: 300 },
+//   },
+// };
 
-export const buttonHover = {
-  whileHover: { scale: 1.05 },
-  whileTap: { scale: 0.95 },
-};
+// export const buttonHover = {
+//   whileHover: { scale: 1.05 },
+//   whileTap: { scale: 0.95 },
+// };

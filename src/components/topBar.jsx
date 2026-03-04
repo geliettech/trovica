@@ -8,19 +8,26 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { staggerContainer, slideDown } from "../animations/motion";
+import { staggerContainer, slideUp } from "../animations/motion";
 
 const TopBar = () => {
   return (
-    <section className="bg-teal-500 text-gray-100 text-sm">
-      <div className="container py-3">
-        <motion.div className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3" variants={staggerContainer}
-  initial="hidden"
-  animate="visible">
-          {/* Left: Contact Info */}
-          <motion.span variants={slideDown} initial="hidden" animate="visible">
-            🚀 Special Offer: Get 20% Off Your First Project
-          </motion.span>
+    <section className="bg-teal-500">
+      <motion.div
+        className="container py-3"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div
+          className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3 text-gray-100 text-sm"
+          variants={slideUp}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Left: discounts */}
+          <span>🚀 Special Offer: Get 20% Off Your First Project</span>
+          {/* Center: Contact Info */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="mailto:info@trovicagency.com"
@@ -59,7 +66,7 @@ const TopBar = () => {
             )}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

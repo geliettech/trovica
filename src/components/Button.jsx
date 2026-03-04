@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { buttonHover } from "../animations/motion";
 
 const Button = ({
   text,
@@ -19,7 +18,7 @@ const Button = ({
   const Component = to ? motion(Link) : motion.button;
 
   return (
-    <Component to={to} className={finalClass} {...buttonHover} {...props}>
+    <Component to={to} className={finalClass} {...props}>
       {text}
     </Component>
   );

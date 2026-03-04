@@ -14,6 +14,11 @@ import TestimonialsCard from "../components/TestimonialCard";
 import Blogs from "../data/blog";
 import Button from "../components/Button";
 import { Helmet } from "react-helmet-async";
+import {
+  pageVariants,
+  pageTransition,
+  staggerContainer, slideLeft, slideRight,
+} from "../animations/motion";
 
 const Home = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -23,7 +28,7 @@ const Home = () => {
     threshold: 0.3, // 30% of element visible
   });
 
-  // Auto slide
+  // Auto Hero Section slide
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % slides.length);
@@ -33,7 +38,7 @@ const Home = () => {
   }, []);
 
   const currentSlide = slides[slideIndex];
-const Blog = Blogs.slice(0, 3)
+  const Blog = Blogs.slice(0, 3);
 
   return (
     <>
@@ -44,21 +49,35 @@ const Blog = Blogs.slice(0, 3)
           content="Professional web development and design services."
         />
       </Helmet>
-      <div className="">
+      <div
+        className=""
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
         {/* ==============  Hero Section  =========== */}
-        <section
-          className="relative min-h-[90vh] bg-cover"
-          style={{
-            backgroundImage: `url(${currentSlide.image})`,
-          }}
-          role="region"
-          aria-label="Hero section"
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gray-900/80" aria-hidden="true" />
+        <AnimatePresence mode="wait">
+          <motion.section
+            className="relative min-h-[90vh] bg-cover"
+            style={{
+              backgroundImage: `url(${currentSlide.image})`,
+            }}
+            role="region"
+            aria-label="Hero section"
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
+          >
+            {/* Overlay */}
+            <div
+              className="absolute inset-0 bg-gray-900/80"
+              aria-hidden="true"
+            />
 
-          {/* Content */}
-          <AnimatePresence mode="wait">
+            {/* Content */}
+
             <motion.div
               key={slideIndex}
               initial={{ opacity: 0, y: 40 }}
@@ -80,32 +99,39 @@ const Blog = Blogs.slice(0, 3)
               </p>
               <Button text={currentSlide.buttonText} to={currentSlide.to} />
             </motion.div>
-          </AnimatePresence>
 
-          {/* Dots Navigation */}
-          <div
-            className="hidden sm:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-20"
-            aria-label="Hero slide navigation"
-          >
-            {slides.map((_, index) => (
-              <span
-                key={index}
-                onClick={() => setSlideIndex(index)}
-                className={`w-4 h-4 cursor-pointer transition ${
-                  index === slideIndex
-                    ? "bg-teal-600"
-                    : "bg-gray-400 hover:bg-white"
-                }`}
-                role="tab"
-                aria-selected={index === slideIndex}
-                aria-label={`Go to slide ${index + 1}`}
-              ></span>
-            ))}
-          </div>
-        </section>
+            {/* Dots Navigation */}
+            <div
+              className="hidden sm:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-20"
+              aria-label="Hero slide navigation"
+            >
+              {slides.map((_, index) => (
+                <span
+                  key={index}
+                  onClick={() => setSlideIndex(index)}
+                  className={`w-4 h-4 cursor-pointer transition ${
+                    index === slideIndex
+                      ? "bg-teal-600"
+                      : "bg-gray-400 hover:bg-white"
+                  }`}
+                  role="tab"
+                  aria-selected={index === slideIndex}
+                  aria-label={`Go to slide ${index + 1}`}
+                ></span>
+              ))}
+            </div>
+          </motion.section>
+        </AnimatePresence>
         {/* ==============  About  =========== */}
         <section className="py-24 bg-gray-50">
-          <div className="container">
+          <motion.div
+            className="container"
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
+          >
             {/* SectionHeader */}
             <SectionHeader
               quest="Who We Are?"
@@ -117,7 +143,7 @@ const Blog = Blogs.slice(0, 3)
             {/* Content */}
             <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
               {/* Left Content */}
-              <div className="xl:col-span-6">
+              <motion.div className="xl:col-span-6" variants={slideLeft} initial="hidden" animate="visible">
                 <h4 className="page-title">Welcome to Halim</h4>
 
                 <div className="space-y-4 blackText__paragraph">
@@ -134,10 +160,10 @@ const Blog = Blogs.slice(0, 3)
                 >
                   Read More
                 </Link>
-              </div>
+              </motion.div>
 
               {/* Right Content: Mission, Vission, History */}
-              <div className="xl:col-span-5 xl:col-start-8 space-y-6">
+              <motion.div className="xl:col-span-5 xl:col-start-8 space-y-6" variants={slideRight} initial="hidden" animate="visible">
                 {AboutRightItems.map((item) => {
                   const Icon = item.icon;
 
@@ -153,9 +179,9 @@ const Blog = Blogs.slice(0, 3)
                     </div>
                   );
                 })}
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
         {/* ==============  Features  =========== */}
         <section

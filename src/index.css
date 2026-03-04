@@ -2,13 +2,12 @@
 
 @import "tailwindcss";
 
-
 /* =========================
    Theme variables
 ========================= */
 @theme {
-  --font-poppins: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  --font-poppins:
+    "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* =========================
@@ -63,23 +62,5 @@
   }
   .page-title::before {
     @apply content-[''] absolute w-10 h-0.5 bg-teal-600 bottom-0;
-  }
-}
-
-/* =========================
-   Utility styles
-========================= */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 }
