@@ -13,7 +13,8 @@ const SectionHeader = ({ quest, title, desc }) => {
       className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative"
       variants={staggerContainer}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
     >
       <div className="text-center xl:text-right">
         <h4>
@@ -21,7 +22,8 @@ const SectionHeader = ({ quest, title, desc }) => {
             className="block text-sm text-teal-600 mb-2"
             variants={slideUp}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
           >
             {quest}
           </motion.span>
@@ -29,7 +31,8 @@ const SectionHeader = ({ quest, title, desc }) => {
             className="text-3xl font-semibold uppercase text-gray-700"
             variants={fadeIn}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
           >
             {title}
           </motion.span>
@@ -40,7 +43,8 @@ const SectionHeader = ({ quest, title, desc }) => {
         className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600"
         variants={zoomIn}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
       />
 
       {/* Horizontal line */}
@@ -48,9 +52,15 @@ const SectionHeader = ({ quest, title, desc }) => {
         className="hidden lg:block absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600"
         variants={zoomIn}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
       />
-      <motion.div variants={slideRight} initial="hidden" animate="visible">
+      <motion.div
+        variants={slideRight}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+      >
         <p className="blackText__paragraph">{desc}</p>
       </motion.div>
     </motion.div>

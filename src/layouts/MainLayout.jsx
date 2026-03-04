@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router";
 import { motion } from "framer-motion";
-import TopBar from "../components/topBar";
+import TopBar from "../components/TopBar";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import useScrollToTop from "../hooks/useScrollToTop";

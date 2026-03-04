@@ -1,14 +1,10 @@
-import {
-  FaEnvelope,
-  FaPhoneAlt,
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-} from "react-icons/fa";
+import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { staggerContainer, slideUp } from "../animations/motion";
+import {
+  COMPANY_INFO, SOCIAL_LINKS,
+} from "../utils/constants";
 
 const TopBar = () => {
   return (
@@ -17,13 +13,15 @@ const TopBar = () => {
         className="container py-3"
         variants={staggerContainer}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
       >
         <motion.div
           className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3 text-gray-100 text-sm"
           variants={slideUp}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
         >
           {/* Left: discounts */}
           <span>🚀 Special Offer: Get 20% Off Your First Project</span>
@@ -36,7 +34,7 @@ const TopBar = () => {
               className="flex items-center gap-1 transformation"
             >
               <FaEnvelope />
-              info@trovicagency.com
+              {COMPANY_INFO.email}
             </Link>
 
             <Link
@@ -46,24 +44,26 @@ const TopBar = () => {
               className="flex items-center gap-1 transformation"
             >
               <FaPhoneAlt />
-              +23 0034 5567 341
+              {COMPANY_INFO.phone}
             </Link>
           </div>
 
           {/* Right: Social Icons */}
           <div className="flex items-center gap-4">
-            {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map(
-              (Icon, i) => (
+            {SOCIAL_LINKS.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
                 <Link
-                  key={i}
-                  to="/"
+                  key={index}
+                  to={item.url}
                   className="transformation"
                   aria-label="Social media link"
                 >
                   <Icon aria-hidden="true" />
                 </Link>
-              ),
-            )}
+              );
+            })}
           </div>
         </motion.div>
       </motion.div>

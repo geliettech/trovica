@@ -1,12 +1,11 @@
-
 // ===============================
 // PAGE TRANSITIONS
 // ===============================
 
 export const pageVariants = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -30 },
+  exit: { opacity: 0, y: -40 },
 };
 
 export const pageTransition = {
@@ -67,7 +66,14 @@ export const bounceIn = {
 
 export const slideUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
 
 // ===============================
@@ -76,7 +82,14 @@ export const slideUp = {
 
 export const slideDown = {
   hidden: { opacity: 0, y: -40 },
-  visible: { opacity: 1, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
 
 // ===============================
@@ -85,18 +98,30 @@ export const slideDown = {
 
 export const slideLeft = {
   hidden: { opacity: 0, x: 40 },
-  visible: { opacity: 1, x: 0 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
-
 // ===============================
 // SLIDE RIGHT
 // ===============================
 
 export const slideRight = {
   hidden: { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
-
 // ===============================
 // ROTATE IN
 // ===============================
@@ -142,7 +167,14 @@ export const staggerContainer = {
 
 export const navItem = {
   hidden: { opacity: 0, y: -10 },
-  visible: { opacity: 1, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
 
 // ===============================
@@ -151,7 +183,14 @@ export const navItem = {
 
 export const dropdown = {
   hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
   exit: { opacity: 0, y: 10 },
 };
 
@@ -161,23 +200,13 @@ export const dropdown = {
 
 export const mobileMenu = {
   hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
   exit: { opacity: 0, x: 100 },
 };
-
-// ===============================
-// HOVER EFFECTS
-// ===============================
-
-// export const iconHover = {
-//   whileHover: {
-//     scale: 1.2,
-//     rotate: 5,
-//     transition: { type: "spring", stiffness: 300 },
-//   },
-// };
-
-// export const buttonHover = {
-//   whileHover: { scale: 1.05 },
-//   whileTap: { scale: 0.95 },
-// };

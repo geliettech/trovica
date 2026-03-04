@@ -17,8 +17,13 @@ import { Helmet } from "react-helmet-async";
 import {
   pageVariants,
   pageTransition,
-  staggerContainer, slideLeft, slideRight,
+  staggerContainer,
+  slideLeft,
+  slideRight,
+  scaleIn,
+  bounceIn,
 } from "../animations/motion";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const Home = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -49,26 +54,22 @@ const Home = () => {
           content="Professional web development and design services."
         />
       </Helmet>
-      <div
+      <motion.div
         className=""
         variants={staggerContainer}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
       >
         {/* ==============  Hero Section  =========== */}
         <AnimatePresence mode="wait">
-          <motion.section
+          <section
             className="relative min-h-[90vh] bg-cover"
             style={{
               backgroundImage: `url(${currentSlide.image})`,
             }}
             role="region"
             aria-label="Hero section"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={pageTransition}
           >
             {/* Overlay */}
             <div
@@ -80,10 +81,11 @@ const Home = () => {
 
             <motion.div
               key={slideIndex}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.6 }}
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={pageTransition}
               className="relative z-10 min-h-[90vh] flex flex-col justify-center items-center text-center gap-6 text-white px-4"
             >
               <h4 className="text-white text-sm md:text-[1.5rem] uppercase tracking-wide font-medium dashed__teal">
@@ -120,18 +122,11 @@ const Home = () => {
                 ></span>
               ))}
             </div>
-          </motion.section>
+          </section>
         </AnimatePresence>
         {/* ==============  About  =========== */}
         <section className="py-24 bg-gray-50">
-          <motion.div
-            className="container"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={pageTransition}
-          >
+          <div className="container">
             {/* SectionHeader */}
             <SectionHeader
               quest="Who We Are?"
@@ -143,16 +138,30 @@ const Home = () => {
             {/* Content */}
             <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
               {/* Left Content */}
-              <motion.div className="xl:col-span-6" variants={slideLeft} initial="hidden" animate="visible">
-                <h4 className="page-title">Welcome to Halim</h4>
+              <div className="xl:col-span-6">
+                <motion.h4
+                  className="page-title"
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  Welcome to Halim
+                </motion.h4>
 
-                <div className="space-y-4 blackText__paragraph">
+                <motion.div
+                  className="space-y-4 blackText__paragraph"
+                  variants={slideLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
                   {AboutItems.map((items, index) => (
                     <p key={index} className="">
                       {items.text}
                     </p>
                   ))}
-                </div>
+                </motion.div>
 
                 <Link
                   href="/about"
@@ -160,28 +169,39 @@ const Home = () => {
                 >
                   Read More
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Right Content: Mission, Vission, History */}
-              <motion.div className="xl:col-span-5 xl:col-start-8 space-y-6" variants={slideRight} initial="hidden" animate="visible">
+              <div className="xl:col-span-5 xl:col-start-8 space-y-6">
                 {AboutRightItems.map((item) => {
                   const Icon = item.icon;
 
                   return (
                     <div className="flex items-center gap-4" key={item.title}>
-                      <div className="text-3xl text-teal-600 border border-teal-600 rounded-full p-2">
+                      <motion.div
+                        className="text-3xl text-teal-600 border border-teal-600 rounded-full p-2"
+                        variants={scaleIn}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.2 }}
+                      >
                         <Icon />
-                      </div>
-                      <div>
+                      </motion.div>
+                      <motion.div
+                        variants={slideRight}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.2 }}
+                      >
                         <h4 className="page-title mb-4">{item.title}</h4>
                         <p className="blackText__paragraph">{item.desc}</p>
-                      </div>
+                      </motion.div>
                     </div>
                   );
                 })}
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </section>
         {/* ==============  Features  =========== */}
         <section
@@ -192,13 +212,25 @@ const Home = () => {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
               {/* FAQ SECTION */}
               <div>
-                <h4 className="page-title text-white">FAQ</h4>
+                <motion.h4
+                  className="page-title text-white"
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  FAQ
+                </motion.h4>
 
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
-                    <div
+                    <motion.div
                       key={index}
                       className="border border-teal-200 rounded-lg overflow-hidden bg-teal-600"
+                      variants={slideLeft}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.2 }}
                     >
                       <button
                         onClick={() =>
@@ -208,7 +240,7 @@ const Home = () => {
                       >
                         {faq.title}
                         <span className="text-xl">
-                          {activeIndex === index ? "−" : "+"}
+                          {activeIndex === index ? <FaMinus /> : <FaPlus />}
                         </span>
                       </button>
 
@@ -217,18 +249,32 @@ const Home = () => {
                           {faq.content}
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
 
               {/* SKILLS SECTION */}
               <div>
-                <h4 className="page-title text-white">Our Skills</h4>
-
-                <div className="space-y-5">
+                <motion.h4
+                  className="page-title text-white"
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  Our Skills
+                </motion.h4>
+                <div>
                   {skills.map((skill, index) => (
-                    <div key={index}>
+                    <motion.div
+                      key={index}
+                      className="space-y-5"
+                      variants={slideRight}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.2 }}
+                    >
                       <h5 className="font-medium capitalize text-white mb-1">
                         {skill.name}
                       </h5>
@@ -242,7 +288,7 @@ const Home = () => {
                           {skill.value}%
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -301,7 +347,11 @@ const Home = () => {
             {/* Team Members */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
               {teamMembers.map((member, idx) => (
-                <div
+                <motion.div
+                  variants={bounceIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
                   key={idx}
                   className="relative group overflow-hidden rounded-lg shadow-lg"
                 >
@@ -337,7 +387,7 @@ const Home = () => {
                       })}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -386,7 +436,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      </div>
+      </motion.div>
     </>
   );
 };

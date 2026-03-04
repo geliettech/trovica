@@ -1,122 +1,3 @@
-// import React from "react";
-
-// // Footer Section
-// const Footer = () => {
-//   const quickLinks = [
-//     { label: "Home", link: "#" },
-//     { label: "About", link: "#" },
-//     { label: "Services", link: "#" },
-//     { label: "Portfolio", link: "#" },
-//     { label: "Gallery", link: "#" },
-//     { label: "Contact Us", link: "#" },
-//   ];
-
-//   const latestPosts = [
-//     { label: "Responsive Web Design Tips", link: "#" },
-//     { label: "Creative Branding Ideas", link: "#" },
-//     { label: "UX/UI Best Practices", link: "#" },
-//     { label: "Modern Web Development", link: "#" },
-//     { label: "Graphics Design Inspiration", link: "#" },
-//   ];
-
-//   const contactInfo = [
-//     { icon: "fa-solid fa-location-dot", text: "245 Street, Sydney, Australia" },
-//     { icon: "fa-solid fa-phone", text: "+23 0034 5567 341" },
-//     { icon: "fa-solid fa-mobile-button", text: "+23 0044 6755 411" },
-//     { icon: "fa-solid fa-envelope", text: "info@trovicagency.com" },
-//     { icon: "fa-solid fa-earth-europe", text: "www.trovicagency.com" },
-//   ];
-
-//   return (
-//     <footer className="bg-gray-900 text-gray-200 pt-16">
-//       <div className="container grid grid-cols-1 md:grid-cols-12 gap-8">
-//         {/* Logo & About */}
-//         <div className="md:col-span-3 text-center md:text-left">
-//           <h4 className="text-2xl font-bold mb-2 text-white uppercase">
-//             Trovica
-//           </h4>
-//           <p className="text-gray-400">
-//             We are a creative agency specializing in web design, web
-//             development, responsive design, branding, and graphics. We craft
-//             digital experiences that elevate your brand.
-//           </p>
-//         </div>
-
-//         {/* Quick Links */}
-//         <div className="md:col-span-2">
-//           <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
-//           <ul className="space-y-2">
-//             {quickLinks.map((link, idx) => (
-//               <li key={idx}>
-//                 <a
-//                   href={link.link}
-//                   className="flex items-center gap-2 hover:text-teal-400"
-//                 >
-//                   <i className="fa-solid fa-angles-right"></i> {link.label}
-//                 </a>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-
-//         {/* Latest Posts */}
-//         <div className="md:col-span-4">
-//           <h4 className="text-xl font-semibold mb-4">Latest Posts</h4>
-//           <ul className="space-y-2">
-//             {latestPosts.map((post, idx) => (
-//               <li key={idx}>
-//                 <a
-//                   href={post.link}
-//                   className="flex items-center gap-2 hover:text-teal-400"
-//                 >
-//                   <i className="fa-solid fa-angles-right"></i> {post.label}
-//                 </a>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-
-//         {/* Contact Info */}
-//         <div className="md:col-span-3">
-//           <h4 className="text-xl font-semibold mb-4">Contact Us</h4>
-//           <ul className="space-y-2">
-//             {contactInfo.map((info, idx) => (
-//               <li key={idx} className="flex items-center gap-2">
-//                 <i className={`${info.icon} text-teal-500`}></i>
-//                 {info.text}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       </div>
-
-//       {/* Copyright & Social */}
-//       <div className="container mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
-//         <p className="text-gray-500">
-//           &copy; 2026 Trovica Agency. All rights reserved.
-//         </p>
-//         <div className="flex gap-4 mt-4 md:mt-0">
-//           <a href="#" className="hover:text-teal-500">
-//             <i className="fa-brands fa-facebook-f">c</i>k
-//           </a>
-//           <a href="#" className="hover:text-teal-500">
-//             <i className="fa-brands fa-twitter"></i>k
-//           </a>
-//           <a href="#" className="hover:text-teal-500">
-//             <i className="fa-brands fa-linkedin-in"></i>k
-//           </a>
-//           <a href="#" className="hover:text-teal-500">
-//             <i className="fa-brands fa-instagram"></i>k
-//           </a>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-// src/components/Footer.jsx
-import React from "react";
 import {
   COMPANY_INFO,
   NAV_LINKS,
@@ -124,8 +5,13 @@ import {
   SOCIAL_LINKS,
 } from "../utils/constants";
 import { Link } from "react-router";
+import { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const Footer = () => {
+  const [openDropdown, setOpenDropdown] = useState(null);
+
   return (
     <footer className="bg-gray-900 text-gray-200 pt-16">
       <div className="container grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -141,17 +27,62 @@ const Footer = () => {
         <div className="md:col-span-2">
           <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2">
-            {NAV_LINKS.map((link, idx) => (
-              <li key={idx}>
-                <Link
-                  to={link.path}
-                  className="flex items-center gap-2 hover:text-teal-400 transition"
-                >
-                  <i className="fa-solid fa-angles-right"></i>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_LINKS.map((link, idx) =>
+              link.dropdown ? (
+                <li key={idx} className="relative">
+                  {/* Dropdown Button */}
+                  <button
+                    onClick={() =>
+                      setOpenDropdown(openDropdown === idx ? null : idx)
+                    }
+                    className="flex items-center gap-2 text-gray-400 hover:text-gray-300 transformation"
+                  >
+                    {link.label}
+                    <FaChevronDown className="text-xs" />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {openDropdown === idx && (
+                    <ul className="absolute left-0 lg:mt-2 mt-0 lg:top-full bg-gray-400 text-gray-900 shadow rounded-md w-48 text-sm z-50">
+                      {link.dropdown.map((drop, i) => (
+                        <li key={i}>
+                          <NavLink
+                            to={drop.path}
+                            onClick={() => {
+                              setMenuOpen(false);
+                              setOpenDropdown(null);
+                            }}
+                            className={({ isActive }) =>
+                              `block px-4 py-2 hover:bg-gray-100 ${
+                                isActive ? "text-teal-600 font-semibold" : ""
+                              }`
+                            }
+                          >
+                            {drop.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ) : (
+                <li key={idx}>
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 lg:px-0 lg:py-0 ${
+                        isActive
+                          ? "text-teal-600 font-semibold"
+                          : "text-gray-400 hover:text-gray-300 transformation"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ),
+            )}
           </ul>
         </div>
 
@@ -163,7 +94,7 @@ const Footer = () => {
               <li key={idx}>
                 <a
                   href={post.path}
-                  className="flex items-center gap-2 hover:text-teal-400 transition"
+                  className="flex items-center gap-2 text-gray-400 hover:text-teal-400 transition"
                 >
                   <i className="fa-solid fa-angles-right"></i>
                   {post.label}
@@ -204,22 +135,23 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="container mx-auto px-6 mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
         <p className="text-gray-500 text-sm">
-          &copy; 2025 - {new Date().getFullYear()} {COMPANY_INFO.name}. All rights
-          reserved.
+          &copy; 2025 - {new Date().getFullYear()} {COMPANY_INFO.name}. All
+          rights reserved.
         </p>
 
         <div className="flex gap-4 mt-4 md:mt-0">
-          {SOCIAL_LINKS.map((social, idx) => (
-            <a
-              key={idx}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-teal-500 transition"
-            >
-              <i className={`fa-brands ${social.icon}`}></i>
-            </a>
-          ))}
+          {SOCIAL_LINKS.map((social, idx) => {
+            const Icon = social.icon;
+            return (
+              <Link
+                key={idx}
+                to={social.url}
+                className="hover:text-teal-500 transformation"
+              >
+                <Icon />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </footer>

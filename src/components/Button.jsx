@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { bounceIn } from "../animations/motion";
 
 const Button = ({
   text,
@@ -15,10 +16,18 @@ const Button = ({
 
   const finalClass = `${baseClass} transition-all ${className}`.trim();
 
-  const Component = to ? motion(Link) : motion.button;
+  const Component = to ? motion.create(Link) : motion.create("button");
 
   return (
-    <Component to={to} className={finalClass} {...props}>
+    <Component
+      to={to}
+      className={finalClass}
+      variants={bounceIn}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      {...props}
+    >
       {text}
     </Component>
   );
