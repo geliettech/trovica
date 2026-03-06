@@ -339,7 +339,7 @@ const Home = () => {
           <div className="container">
             {/*  Team header */}
             <SectionHeader
-              titleQuest="Who We Are?"
+              quest="Who We Are?"
               title="Our team"
               desc="We are a creative agency specializing in web design, web development,
               responsive design, graphics design, creative design, and branding."

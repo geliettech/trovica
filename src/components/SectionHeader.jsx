@@ -7,7 +7,13 @@ import {
 } from "../animations/motion";
 import { motion } from "framer-motion";
 
-const SectionHeader = ({ quest, title, desc }) => {
+const SectionHeader = ({
+  quest,
+  title,
+  desc,
+  titleClassName,
+  descClassName,
+}) => {
   return (
     <motion.div
       className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative"
@@ -28,7 +34,7 @@ const SectionHeader = ({ quest, title, desc }) => {
             {quest}
           </motion.span>
           <motion.span
-            className="text-3xl font-semibold uppercase text-gray-700"
+            className={`text-3xl font-semibold uppercase text-gray-700 ${titleClassName}`}
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
@@ -61,7 +67,7 @@ const SectionHeader = ({ quest, title, desc }) => {
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
       >
-        <p className="blackText__paragraph">{desc}</p>
+        <p className={`blackText__paragraph ${descClassName}`}>{desc}</p>
       </motion.div>
     </motion.div>
   );
