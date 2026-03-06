@@ -87,7 +87,7 @@ const TestimonialsCard = () => {
         </div>
 
         {/* Dots */}
-        <div className="flex gap-3">
+        <div className="flex justify-center gap-3 mt-18">
           {slides.map((_, index) => (
             <button
               key={index}
