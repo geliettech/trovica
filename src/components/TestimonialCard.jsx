@@ -38,7 +38,7 @@ const TestimonialsCard = () => {
         />
 
         {/* Slider */}
-        <div className="relative h-72 mt-12 flex justify-center">
+        <div className="relative h-84 mt-12 flex justify-center">
           {visibleSlides.map((slide, index) => {
             const isActive = index === 1; // Middle slide
             const isLeft = index === 0;
@@ -87,7 +87,7 @@ const TestimonialsCard = () => {
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center absolute gap-3 bottom-1 left-1/2 transform -translate-x-1/2">
+        <div className="flex gap-3">
           {slides.map((_, index) => (
             <button
               key={index}
