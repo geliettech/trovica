@@ -353,13 +353,13 @@ const Home = () => {
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.2 }}
                   key={idx}
-                  className="relative group overflow-hidden rounded-lg shadow-lg"
+                  className="relative group overflow-hidden rounded-lg shadow-lg w-80 h-100"
                 >
                   {/* Team Image */}
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-120 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-90"
                   />
 
                   {/* Overlay */}

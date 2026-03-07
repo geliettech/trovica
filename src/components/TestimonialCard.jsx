@@ -48,7 +48,7 @@ const TestimonialsCard = () => {
               <div
                 key={index}
                 className={`absolute transition-all duration-500 p-6 sm:p-8 rounded-lg text-center
-                  w-full max-w-xs sm:max-w-md
+                  w-full max-w-50 lg:max-w-md
                   ${
                     isActive
                       ? "z-20 scale-100 opacity-100 bg-teal-600 text-white shadow-xl"
