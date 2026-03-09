@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import MainLayout from "./layouts/MainLayout";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import AboutPage from "./pages/About";
 import ServicesPage from "./pages/Services";
-import PortfolioPage from "./pages/portfolio";
+import PortfolioPage from "./pages/Portfolio";
 import BrandIdentity from "./pages/Gallery/brand-identity";
 import BusinessCorporate from "./pages/Gallery/business-corporate";
 import MarketingCampaigns from "./pages/Gallery/marketing-campaigns";
