@@ -14,6 +14,16 @@ import TestimonialsCard from "../components/TestimonialCard";
 import Blogs from "../data/blog";
 import Button from "../components/Button";
 import { Helmet } from "react-helmet-async";
+import {
+  pageVariants,
+  pageTransition,
+  staggerContainer,
+  slideLeft,
+  slideRight,
+  scaleIn,
+  bounceIn,
+} from "../animations/motion";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const Home = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -23,7 +33,7 @@ const Home = () => {
     threshold: 0.3, // 30% of element visible
   });
 
-  // Auto slide
+  // Auto Hero Section slide
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % slides.length);
@@ -33,6 +43,7 @@ const Home = () => {
   }, []);
 
   const currentSlide = slides[slideIndex];
+  const Blog = Blogs.slice(0, 3);
 
   return (
     <>
@@ -42,28 +53,43 @@ const Home = () => {
           name="description"
           content="Professional web development and design services."
         />
+        <meta
+          name="keywords"
+          content="web design, web development, responsive layouts, creative design, graphics, branding"
+        />
       </Helmet>
-      <div className="">
+      <motion.div
+        className=""
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {/* ==============  Hero Section  =========== */}
-        <section
-          className="relative min-h-[90vh] bg-cover"
-          style={{
-            backgroundImage: `url(${currentSlide.image})`,
-          }}
-          role="region"
-          aria-label="Hero section"
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gray-900/80" aria-hidden="true" />
+        <AnimatePresence mode="wait">
+          <section
+            className="relative min-h-[90vh] bg-cover"
+            style={{
+              backgroundImage: `url(${currentSlide.image})`,
+            }}
+            role="region"
+            aria-label="Hero section"
+          >
+            {/* Overlay */}
+            <div
+              className="absolute inset-0 bg-gray-900/80"
+              aria-hidden="true"
+            />
 
-          {/* Content */}
-          <AnimatePresence mode="wait">
+            {/* Content */}
+
             <motion.div
               key={slideIndex}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.6 }}
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={pageTransition}
               className="relative z-10 min-h-[90vh] flex flex-col justify-center items-center text-center gap-6 text-white px-4"
             >
               <h4 className="text-white text-sm md:text-[1.5rem] uppercase tracking-wide font-medium dashed__teal">
@@ -79,29 +105,29 @@ const Home = () => {
               </p>
               <Button text={currentSlide.buttonText} to={currentSlide.to} />
             </motion.div>
-          </AnimatePresence>
 
-          {/* Dots Navigation */}
-          <div
-            className="hidden sm:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-20"
-            aria-label="Hero slide navigation"
-          >
-            {slides.map((_, index) => (
-              <span
-                key={index}
-                onClick={() => setSlideIndex(index)}
-                className={`w-4 h-4 cursor-pointer transition ${
-                  index === slideIndex
-                    ? "bg-teal-600"
-                    : "bg-gray-400 hover:bg-white"
-                }`}
-                role="tab"
-                aria-selected={index === slideIndex}
-                aria-label={`Go to slide ${index + 1}`}
-              ></span>
-            ))}
-          </div>
-        </section>
+            {/* Dots Navigation */}
+            <div
+              className="hidden sm:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-20"
+              aria-label="Hero slide navigation"
+            >
+              {slides.map((_, index) => (
+                <span
+                  key={index}
+                  onClick={() => setSlideIndex(index)}
+                  className={`w-4 h-4 cursor-pointer transition ${
+                    index === slideIndex
+                      ? "bg-teal-600"
+                      : "bg-gray-400 hover:bg-white"
+                  }`}
+                  role="tab"
+                  aria-selected={index === slideIndex}
+                  aria-label={`Go to slide ${index + 1}`}
+                ></span>
+              ))}
+            </div>
+          </section>
+        </AnimatePresence>
         {/* ==============  About  =========== */}
         <section className="py-24 bg-gray-50">
           <div className="container">
@@ -117,22 +143,30 @@ const Home = () => {
             <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
               {/* Left Content */}
               <div className="xl:col-span-6">
-                <h4 className="page-title">Welcome to Halim</h4>
+                <motion.h4
+                  className="page-title"
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  Welcome to Halim
+                </motion.h4>
 
-                <div className="space-y-4 blackText__paragraph">
+                <motion.div
+                  className="space-y-4 blackText__paragraph"
+                  variants={slideLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
                   {AboutItems.map((items, index) => (
                     <p key={index} className="">
                       {items.text}
                     </p>
                   ))}
-                </div>
-
-                <Link
-                  href="/about"
-                  className="mt-8 btn-primary rounded-md transformation"
-                >
-                  Read More
-                </Link>
+                </motion.div>
+                <Button text="Read More" to="/about" className="mt-8" />
               </div>
 
               {/* Right Content: Mission, Vission, History */}
@@ -142,13 +176,24 @@ const Home = () => {
 
                   return (
                     <div className="flex items-center gap-4" key={item.title}>
-                      <div className="text-3xl text-teal-600 border border-teal-600 rounded-full p-2">
+                      <motion.div
+                        className="text-3xl text-teal-600 border border-teal-600 rounded-full p-2"
+                        variants={scaleIn}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.2 }}
+                      >
                         <Icon />
-                      </div>
-                      <div>
+                      </motion.div>
+                      <motion.div
+                        variants={slideRight}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.2 }}
+                      >
                         <h4 className="page-title mb-4">{item.title}</h4>
                         <p className="blackText__paragraph">{item.desc}</p>
-                      </div>
+                      </motion.div>
                     </div>
                   );
                 })}
@@ -165,13 +210,25 @@ const Home = () => {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
               {/* FAQ SECTION */}
               <div>
-                <h4 className="page-title text-white">FAQ</h4>
+                <motion.h4
+                  className="page-title text-white"
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  FAQ
+                </motion.h4>
 
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
-                    <div
+                    <motion.div
                       key={index}
                       className="border border-teal-200 rounded-lg overflow-hidden bg-teal-600"
+                      variants={slideLeft}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.2 }}
                     >
                       <button
                         onClick={() =>
@@ -181,7 +238,7 @@ const Home = () => {
                       >
                         {faq.title}
                         <span className="text-xl">
-                          {activeIndex === index ? "−" : "+"}
+                          {activeIndex === index ? <FaMinus /> : <FaPlus />}
                         </span>
                       </button>
 
@@ -190,18 +247,32 @@ const Home = () => {
                           {faq.content}
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
 
               {/* SKILLS SECTION */}
               <div>
-                <h4 className="page-title text-white">Our Skills</h4>
-
-                <div className="space-y-5">
+                <motion.h4
+                  className="page-title text-white"
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  Our Skills
+                </motion.h4>
+                <div>
                   {skills.map((skill, index) => (
-                    <div key={index}>
+                    <motion.div
+                      key={index}
+                      className="space-y-5"
+                      variants={slideRight}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.2 }}
+                    >
                       <h5 className="font-medium capitalize text-white mb-1">
                         {skill.name}
                       </h5>
@@ -215,7 +286,7 @@ const Home = () => {
                           {skill.value}%
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -266,7 +337,7 @@ const Home = () => {
           <div className="container">
             {/*  Team header */}
             <SectionHeader
-              titleQuest="Who We Are?"
+              quest="Who We Are?"
               title="Our team"
               desc="We are a creative agency specializing in web design, web development,
               responsive design, graphics design, creative design, and branding."
@@ -274,7 +345,11 @@ const Home = () => {
             {/* Team Members */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
               {teamMembers.map((member, idx) => (
-                <div
+                <motion.div
+                  variants={bounceIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
                   key={idx}
                   className="relative group overflow-hidden rounded-lg shadow-lg"
                 >
@@ -310,7 +385,7 @@ const Home = () => {
                       })}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -327,7 +402,7 @@ const Home = () => {
               desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
             />
             <div className="grid md:grid-cols-3 gap-8">
-              {Blogs.map((blog) => (
+              {Blog.map((blog) => (
                 <div
                   key={blog.id}
                   className="bg-white shadow rounded-lg overflow-hidden"
@@ -359,7 +434,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      </div>
+      </motion.div>
     </>
   );
 };

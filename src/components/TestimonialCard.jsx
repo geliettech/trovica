@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import slides from "../data/testimonials";
+import SectionHeader from "./SectionHeader";
 
 const TestimonialsCard = () => {
   const [current, setCurrent] = useState(0);
@@ -8,13 +9,14 @@ const TestimonialsCard = () => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
+
     return () => clearInterval(timer);
   }, []);
 
   const visibleSlides = [
-    slides[(current - 1 + slides.length) % slides.length],
-    slides[current],
-    slides[(current + 1) % slides.length],
+    slides[(current - 1 + slides.length) % slides.length], // Left (exit)
+    slides[current], // Active
+    slides[(current + 1) % slides.length], // Right (next)
   ];
 
   return (
@@ -26,58 +28,54 @@ const TestimonialsCard = () => {
       <div className="absolute inset-0 bg-gray-900/60" aria-hidden="true" />
 
       <div className="container relative z-10">
-        {/* ======================= testimonials Title ==================== */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative">
-          <div className="xl:text-right">
-            <h4 className="text-3xl font-semibold uppercase text-white">
-              <span className="block text-sm text-teal-600 mb-2">
-                Who We Are?
-              </span>
-              What clients say
-            </h4>
-          </div>
-          {/* Vertical line */}
-          <span className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600" />
+        {/* Section Header */}
+        <SectionHeader
+          quest="Who We Are?"
+          title="What clients say"
+          desc="Trovica Agency specializes in web design, development, responsive layouts, creative design, graphics, and branding."
+          titleClassName="text-white"
+          descClassName="text-white"
+        />
 
-          {/* Horizontal line */}
-          <span className="hidden lg:block absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600" />
-          <div>
-            <p className="whiteText__paragraph">
-              Trovica Agency specializes in web design, development, responsive
-              layouts, creative design, graphics, and branding. Here's what our
-              clients have to say about their experience working with us.
-            </p>
-          </div>
-        </div>
         {/* Slider */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div className="relative h-84 mt-12 flex justify-center">
           {visibleSlides.map((slide, index) => {
-            const isActive = index === 1; // middle card
+            const isActive = index === 1; // Middle slide
+            const isLeft = index === 0;
+            const isRight = index === 2;
 
             return (
               <div
                 key={index}
-                className={`p-8 rounded-lg text-center transition-all duration-500
-          ${
-            isActive
-              ? "bg-teal-600 text-white scale-105 shadow-xl"
-              : "bg-white/10 backdrop-blur-sm text-gray-100"
-          }
-        `}
+                className={`absolute transition-all duration-500 p-6 sm:p-8 rounded-lg text-center
+                  w-full max-w-md
+                  ${
+                    isActive
+                      ? "z-20 scale-100 opacity-100 bg-teal-600 text-white shadow-xl"
+                      : "z-10 scale-95 opacity-60 bg-white/10 backdrop-blur-sm text-gray-100"
+                  }
+                  ${
+                    isLeft
+                      ? "translate-x-[-50%] sm:translate-x-[-50%]"
+                      : isRight
+                        ? "translate-x-[50%] sm:translate-x-[50%]"
+                        : ""
+                  }
+                `}
               >
                 <img
                   src={slide.image}
                   alt={slide.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white/30"
+                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white/30"
                 />
 
-                <p className="mb-4 text-sm leading-relaxed">{slide.text}</p>
+                <p className="mb-4 whiteText__paragraph">{slide.text}</p>
 
                 <h4 className="text-lg font-semibold">
                   {slide.name}
                   <span
-                    className={`block text-sm ${
-                      isActive ? "text-white/90" : "text-gray-300"
+                    className={`block text-sm font-normal mt-4 ${
+                      isActive ? "text-white/70" : "text-gray-300"
                     }`}
                   >
                     {slide.role}
@@ -86,6 +84,23 @@ const TestimonialsCard = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-3 mt-18">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300
+                ${
+                  current === index
+                    ? "bg-teal-500 scale-125"
+                    : "bg-white/40 hover:bg-white"
+                }
+              `}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -1,5 +1,7 @@
 import services from "../data/services";
 import SectionHeader from "./SectionHeader";
+import { bounceIn } from "../animations/motion";
+import { motion } from "framer-motion";
 
 const ServicesCard = () => {
   return (
@@ -17,8 +19,12 @@ const ServicesCard = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={bounceIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
                 className="text-center bg-white p-8 rounded-2xl shadow-sm  hover:shadow-lg transition duration-300"
               >
                 <div className="flex justify-center items-center mb-5">
@@ -28,7 +34,7 @@ const ServicesCard = () => {
                   {service.title}
                 </h4>
                 <p className="blackText__paragraph">{service.desc}</p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

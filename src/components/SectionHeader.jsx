@@ -1,25 +1,75 @@
-const SectionHeader = ({quest, title, desc}) => {
-  return (
-        <div className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative">
-          <div className="xl:text-right">
-            <h4 className="text-3xl font-semibold uppercase text-gray-700">
-              <span className="block text-sm text-teal-600 mb-2">
-                {quest}
-              </span>
-              {title}
-            </h4>
-          </div>
-          {/* Vertical line */}
-          <span className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600" />
+import {
+  staggerContainer,
+  fadeIn,
+  slideUp,
+  zoomIn,
+  slideRight,
+} from "../animations/motion";
+import { motion } from "framer-motion";
 
-          {/* Horizontal line */}
-          <span className="hidden lg:block absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600" />
-          <div>
-            <p className="blackText__paragraph">
-             {desc}
-            </p>
-          </div>
-        </div>
+const SectionHeader = ({
+  quest,
+  title,
+  desc,
+  titleClassName,
+  descClassName,
+}) => {
+  return (
+    <motion.div
+      className="grid grid-cols-1 xl:grid-cols-2 items-center mb-16 gap-6 relative"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+    >
+      <div className="text-center xl:text-right">
+        <h4>
+          <motion.span
+            className="block text-sm text-teal-600 mb-2"
+            variants={slideUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+          >
+            {quest}
+          </motion.span>
+          <motion.span
+            className={`text-3xl font-semibold uppercase text-gray-700 ${titleClassName}`}
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+          >
+            {title}
+          </motion.span>
+        </h4>
+      </div>
+      {/* Vertical line */}
+      <motion.span
+        className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-teal-600"
+        variants={zoomIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+      />
+
+      {/* Horizontal line */}
+      <motion.span
+        className="hidden lg:block absolute bottom-0 left-1/2 h-px w-10 -translate-x-1/2 bg-teal-600"
+        variants={zoomIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+      />
+      <motion.div
+        variants={slideRight}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+      >
+        <p className={`blackText__paragraph ${descClassName}`}>{desc}</p>
+      </motion.div>
+    </motion.div>
   );
 };
 

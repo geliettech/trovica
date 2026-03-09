@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { bounceIn } from "../animations/motion";
 
 const Button = ({
   text,
@@ -9,23 +11,25 @@ const Button = ({
 }) => {
   const baseClass =
     variant === "primary"
-      ? "btn-primary"
+      ? "btn-primary rounded-md transformation"
       : "border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white";
 
-  const finalClass = `${baseClass} transformation ${className}`.trim();
+  const finalClass = `${baseClass} transition-all ${className}`.trim();
 
-  if (to) {
-    return (
-      <Link to={to} className={finalClass} {...props}>
-        {text}
-      </Link>
-    );
-  }
+  const Component = to ? motion.create(Link) : motion.create("button");
 
   return (
-    <button className={finalClass} {...props}>
+    <Component
+      to={to}
+      className={finalClass}
+      variants={bounceIn}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      {...props}
+    >
       {text}
-    </button>
+    </Component>
   );
 };
 

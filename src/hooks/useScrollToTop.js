@@ -1,4 +1,4 @@
-// src/hooks/useScrollToTop.js
+// Scroll To Top when visited new page
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const filters = ["all", "business", "finance", "marketing", "idea"];
 
@@ -57,21 +58,13 @@ const PortfolioPage = () => {
 
   return (
     <>
-      {/* Breadcrumb */}
-      <section className="bg-gray-100 py-12">
-        <div className="container text-center">
-          <h4 className="text-2xl font-semibold mb-2 text-teal-600">Portfolio</h4>
-          <ul className="flex justify-center gap-2 text-sm text-teal-600">
-            <li>
-              <a href="/" className="hover:text-w">
-                home
-              </a>
-            </li>
-            <li>/</li>
-            <li className="text-black">Portfolio</li>
-          </ul>
-        </div>
-      </section>
+      <Helmet>
+        <title>Portfolio | Trovica Agency</title>
+        <meta
+          name="description"
+          content="Explore our diverse portfolio showcasing innovative projects and creative solutions across various industries."
+        />
+      </Helmet>
 
       {/* Portfolio */}
       <section className="py-24">

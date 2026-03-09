@@ -1,15 +1,16 @@
-import { Outlet, useLocation, Link } from "react-router";
-import { motion } from "framer-motion";
-import TopBar from "../components/topBar";
+import TopBar from "../components/TopBar";
 import Header from "../components/Header";
+import { Outlet, useLocation } from "react-router";
 import Footer from "../components/Footer";
 import useScrollToTop from "../hooks/useScrollToTop";
+import { motion } from "framer-motion";
+import { pageVariants, pageTransition } from "../animations/motion";
 import Button from "../components/Button";
+
 
 const MainLayout = () => {
   const { pathname } = useLocation();
 
-  // Custom hook
   useScrollToTop();
 
   return (
@@ -17,22 +18,22 @@ const MainLayout = () => {
       <TopBar />
       <Header />
 
-      {/* Page Content */}
-      <main>
-        <motion.div
-          key={pathname}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="min-h-[60vh]"
-        >
-          <Outlet />
-        </motion.div>
-      </main>
+      {/* Page Content with Animation */}
+      <motion.main
+        key={pathname}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={pageTransition}
+        className="min-h-[60vh]"
+      >
+        <Outlet />
+      </motion.main>
 
       {/* CTA Section */}
       <section className="bg-teal-50 py-12">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="md:w-1/2">
             <h4 className="text-2xl font-bold mb-2 text-gray-800">
               Best Solution for Your Business
@@ -48,7 +49,7 @@ const MainLayout = () => {
           </div>
         </div>
       </section>
-      {/* footer */}
+
       <Footer />
     </div>
   );
