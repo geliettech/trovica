@@ -8,8 +8,8 @@ import BrandIdentity from "./pages/Gallery/brand-identity";
 import BusinessCorporate from "./pages/Gallery/business-corporate";
 import MarketingCampaigns from "./pages/Gallery/marketing-campaigns";
 import CreativeConcepts from "./pages/Gallery/creative-concepts";
-import BlogPage from "./pages/Blog";
-import BlogDetails from "./pages/BlogDetails";
+import BlogPage from "./pages/blog";
+import BlogDetails from "./pages/blogDetails";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
