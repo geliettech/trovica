@@ -13,6 +13,8 @@ import BlogDetails from "./pages/BlogDetails";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+
+
 function App() {
   return (
     <BrowserRouter>
