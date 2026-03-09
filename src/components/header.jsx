@@ -1,5 +1,5 @@
-import Logo from "./Logo";
-import NavBar from "./NavBar";
+import Logo from "./logo";
+import NavBar from "./navBar";
 import { motion } from "framer-motion";
 import { staggerContainer } from "../animations/motion";
 
