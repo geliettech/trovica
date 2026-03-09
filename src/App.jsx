@@ -7,11 +7,11 @@ import PortfolioPage from "./pages/portfolio";
 import BrandIdentity from "./pages/Gallery/brand-identity";
 import BusinessCorporate from "./pages/Gallery/business-corporate";
 import MarketingCampaigns from "./pages/Gallery/marketing-campaigns";
-import GalleryFour from "./pages/Gallery/creative-concepts";
-import Blog from "./pages/Blog";
+import CreativeConcepts from "./pages/Gallery/creative-concepts";
+import BlogPage from "./pages/Blog";
+import BlogDetails from "./pages/BlogDetails";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import BlogDetails from "./pages/BlogDetails";
 
 function App() {
   return (
@@ -25,8 +25,8 @@ function App() {
           <Route path="/gallery-brand-identity" element={<BrandIdentity />} />
           <Route path="/gallery-business-corporate" element={<BusinessCorporate />} />
           <Route path="/gallery-marketing-campaigns" element={<MarketingCampaigns />} />
-          <Route path="/gallery-creative-concepts" element={<GalleryFour />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/gallery-creative-concepts" element={<CreativeConcepts />} />
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/contact" element={<ContactPage />} />
         </Route>
