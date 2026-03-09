@@ -13,8 +13,6 @@ import BlogDetails from "./pages/BlogDetails";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -25,9 +23,18 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/gallery-brand-identity" element={<BrandIdentity />} />
-          <Route path="/gallery-business-corporate" element={<BusinessCorporate />} />
-          <Route path="/gallery-marketing-campaigns" element={<MarketingCampaigns />} />
-          <Route path="/gallery-creative-concepts" element={<CreativeConcepts />} />
+          <Route
+            path="/gallery-business-corporate"
+            element={<BusinessCorporate />}
+          />
+          <Route
+            path="/gallery-marketing-campaigns"
+            element={<MarketingCampaigns />}
+          />
+          <Route
+            path="/gallery-creative-concepts"
+            element={<CreativeConcepts />}
+          />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/contact" element={<ContactPage />} />
