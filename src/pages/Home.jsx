@@ -357,7 +357,7 @@ const Home = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-120 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-100 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
                   {/* Overlay */}
