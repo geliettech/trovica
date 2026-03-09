@@ -53,6 +53,10 @@ const Home = () => {
           name="description"
           content="Professional web development and design services."
         />
+        <meta
+          name="keywords"
+          content="web design, web development, responsive layouts, creative design, graphics, branding"
+        />
       </Helmet>
       <motion.div
         className=""
@@ -162,13 +166,7 @@ const Home = () => {
                     </p>
                   ))}
                 </motion.div>
-
-                <Link
-                  href="/about"
-                  className="mt-8 btn-primary rounded-md transformation"
-                >
-                  Read More
-                </Link>
+                <Button text="Read More" to="/about" className="mt-8" />
               </div>
 
               {/* Right Content: Mission, Vission, History */}
@@ -353,13 +351,13 @@ const Home = () => {
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.2 }}
                   key={idx}
-                  className="relative group overflow-hidden rounded-lg shadow-lg w-80 h-100"
+                  className="relative group overflow-hidden rounded-lg shadow-lg"
                 >
                   {/* Team Image */}
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-90"
+                    className="w-full h-120 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
                   {/* Overlay */}

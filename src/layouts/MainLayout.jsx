@@ -1,11 +1,11 @@
-import { Outlet, useLocation } from "react-router";
-import { motion } from "framer-motion";
 import TopBar from "../components/TopBar";
 import Header from "../components/Header";
+import { Outlet, useLocation } from "react-router";
 import Footer from "../components/Footer";
 import useScrollToTop from "../hooks/useScrollToTop";
-import Button from "../components/Button";
+import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../animations/motion";
+import Button from "../components/Button";
 
 
 const MainLayout = () => {

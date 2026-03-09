@@ -1,35 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router";
 import Blogs from "../data/blog";
-
-// Related blog card component
-const RelatedBlogCard = ({ imgSrc, title, date, year, description, link }) => (
-  <div className="grid md:grid-cols-3 gap-8">
-    {Blogs.map((blog) => (
-      <div key={blog.id} className="bg-white shadow rounded-lg overflow-hidden">
-        <img src={blog.img} alt={blog.title} className="w-full" />
-        <div className="p-4">
-          <h4 className="text-xl font-semibold mb-2">
-            <Link to={`/blog/${blog.id}`} className="hover:text-teal-500 text-gray-700">
-              {blog.title}
-            </Link>
-          </h4>
-          <div className="flex gap-2 text-gray-500 text-sm mb-2">
-            <span>{blog.date}</span>
-            <span>{blog.year}</span>
-          </div>
-          <p className="blackText__paragraph">{blog.description}</p>
-          <Link
-            to={`/blog/${blog.id}`}
-            className="mt-4 btn-primary rounded-md transformation"
-          >
-            Read More
-          </Link>
-        </div>
-      </div>
-    ))}
-  </div>
-);
+import { Helmet } from "react-helmet-async";
 
 // Sidebar component
 const Sidebar = ({ title, items }) => {
@@ -53,11 +25,13 @@ const Sidebar = ({ title, items }) => {
   );
 };
 
-const SingleBlogPage = () => {
+const BlogDetails = () => {
   const { id } = useParams();
   const blog = Blogs.find((blog) => blog.id === Number(id));
 
   if (!blog) return <p>Blog not found</p>;
+
+  const Blog = Blogs.slice(0, 2);
 
   const latestPosts = [
     {
@@ -101,76 +75,122 @@ const SingleBlogPage = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="container">
-        <Link
-          to="/blog"
-          className="inline-block mb-6 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition"
-        >
-          Back to Blogs
-        </Link>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Main content */}
-          <div className="md:col-span-8">
-            <div className="single-blog move-left">
-              <img
-                src={blog.img}
-                alt={blog.title}
-                loading="lazy"
-                className="w-full rounded mb-4"
-              />
-              <h1 className="text-gray-700 text-xl font-medium uppercase">{blog.title}</h1>
-              <span className="text-gray-400 text-sm leading-12">
-                {blog.date} {blog.year}
-              </span>
-              {blog.content.map((text, index) => (
-                <p key={index} className="blackText__paragraph">{text}</p>
-              ))}
+    <>
+      <Helmet>
+        <title>{blog.title} | Trovica Agency</title>
+        <meta name="description" content={blog.description} />
+      </Helmet>
+      <section className="py-24 bg-gray-50">
+        <div className="container">
+          <Link
+            to="/blog"
+            className="inline-block mb-6 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition"
+          >
+            Back to Blogs
+          </Link>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            {/* Main content */}
+            <div className="md:col-span-8">
+              <div className="single-blog move-left">
+                <img
+                  src={blog.img}
+                  alt={blog.title}
+                  loading="lazy"
+                  className="w-full rounded mb-4"
+                />
+                <h1 className="text-gray-700 text-xl font-medium uppercase">
+                  {blog.title}
+                </h1>
+                <span className="text-gray-400 text-sm leading-12">
+                  {blog.date} {blog.year}
+                </span>
+                {blog.content.map((text, index) => (
+                  <p key={index} className="blackText__paragraph">
+                    {text}
+                  </p>
+                ))}
+              </div>
+
+              {/* Related posts */}
+              <div className="mt-16 mb-8">
+                <h3 className="text-gray-700 text-xl font-semibold mb-6 uppercase">
+                  Related Posts
+                </h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {Blog.map((blog) => (
+                    <div
+                      key={blog.id}
+                      className="bg-white shadow rounded-lg overflow-hidden"
+                    >
+                      <img src={blog.img} alt={blog.title} className="w-full" />
+                      <div className="p-4">
+                        <h4 className="text-xl font-semibold mb-2">
+                          <Link
+                            to={`/blog/${blog.id}`}
+                            className="hover:text-teal-500 text-gray-700"
+                          >
+                            {blog.title}
+                          </Link>
+                        </h4>
+                        <div className="flex gap-2 text-gray-500 text-sm mb-2">
+                          <span>{blog.date}</span>
+                          <span>{blog.year}</span>
+                        </div>
+                        <p className="blackText__paragraph">
+                          {blog.description}
+                        </p>
+                        <Link
+                          to={`/blog/${blog.id}`}
+                          className="mt-4 btn-primary rounded-md transformation"
+                        >
+                          Read More
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Comment form */}
+              <div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-700">
+                  Leave a Reply
+                </h3>
+                <form className="flex flex-col gap-3">
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="p-3 border border-gray-300 rounded"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="p-3 border border-gray-300 rounded"
+                  />
+                  <textarea
+                    rows="6"
+                    placeholder="Message"
+                    className="p-3 border border-gray-300 rounded"
+                  ></textarea>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
             </div>
 
-            {/* Related posts */}
-            <div className="mt-16 mb-8">
-              <h3 className="text-gray-700 text-xl font-semibold mb-6 uppercase">Related Posts</h3>
-              <RelatedBlogCard />
+            {/* Sidebar */}
+            <div className="md:col-span-4">
+              <Sidebar title="Latest Posts" items={latestPosts} />
+              <Sidebar title="Categories" items={categories} />
             </div>
-            {/* Comment form */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-700">Leave a Reply</h3>
-              <form className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="p-3 border border-gray-300 rounded"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="p-3 border border-gray-300 rounded"
-                />
-                <textarea
-                  rows="6"
-                  placeholder="Message"
-                  className="p-3 border border-gray-300 rounded"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-          </div>
-
-          {/* Sidebar */}
-          <div className="md:col-span-4">
-            <Sidebar title="Latest Posts" items={latestPosts} />
-            <Sidebar title="Categories" items={categories} />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
-export default SingleBlogPage;
+export default BlogDetails;

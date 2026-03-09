@@ -11,7 +11,7 @@ const Button = ({
 }) => {
   const baseClass =
     variant === "primary"
-      ? "btn-primary"
+      ? "btn-primary rounded-md transformation"
       : "border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white";
 
   const finalClass = `${baseClass} transition-all ${className}`.trim();

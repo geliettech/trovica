@@ -26,9 +26,9 @@ export const NAV_LINKS = [
     label: "Gallery",
     dropdown: [
       { label: "Brand Identity", path: "/gallery-brand-identity" },
-      { label: "Business & Corporate", path: "/gallery-business" },
-      { label: "Marketing Campaigns", path: "/gallery-marketing" },
-      { label: "Creative Concepts", path: "/gallery-creative" },
+      { label: "Business & Corporate", path: "/gallery-business-corporate" },
+      { label: "Marketing Campaigns", path: "/gallery-marketing-campaigns" },
+      { label: "Creative Concepts", path: "/gallery-creative-concepts" },
     ],
   },
   { label: "Blog", path: "/blog" },
