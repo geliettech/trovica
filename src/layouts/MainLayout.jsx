@@ -1,7 +1,7 @@
-import TopBar from "../components/TopBar";
-import Header from "../components/Header";
+import TopBar from "../components/topBar";
+import Header from "../components/header";
 import { Outlet, useLocation } from "react-router";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import useScrollToTop from "../hooks/useScrollToTop";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../animations/motion";
