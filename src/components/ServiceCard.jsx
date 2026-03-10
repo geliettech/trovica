@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const ServicesCard = () => {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-12 md:py-24 bg-gray-50">
       <div className="container">
         {/* ======================= Services Title ==================== */}
         <SectionHeader
@@ -15,7 +15,7 @@ const ServicesCard = () => {
               grow, engage users, and build strong online identities."
         />
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-10">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -25,12 +25,12 @@ const ServicesCard = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
-                className="text-center bg-white p-8 rounded-2xl shadow-sm  hover:shadow-lg transition duration-300"
+                className="text-center bg-white p-4 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition duration-300"
               >
                 <div className="flex justify-center items-center mb-5">
-                  <Icon className="text-5xl bg-teal-600 text-white rounded-full p-3" />
+                  <Icon className="text-4xl md:text-5xl bg-teal-600 text-white rounded-full p-2 md:p-3" />
                 </div>
-                <h4 className="text-2xl font-semibold mb-3 capitalize text-gray-700">
+                <h4 className="text-lg md:text-2xl font-semibold mb-3 capitalize text-gray-700">
                   {service.title}
                 </h4>
                 <p className="blackText__paragraph">{service.desc}</p>

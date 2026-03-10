@@ -4,7 +4,7 @@ import { Outlet, useLocation } from "react-router";
 import Footer from "../components/footer";
 import useScrollToTop from "../hooks/useScrollToTop";
 import { motion } from "framer-motion";
-import { pageVariants, pageTransition } from "../animations/motion";
+import { staggerContainer, pageVariants, pageTransition, slideLeft } from "../animations/motion";
 import Button from "../components/Button";
 
 
@@ -14,7 +14,10 @@ const MainLayout = () => {
   useScrollToTop();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <motion.div variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }} className="flex flex-col min-h-screen">
       <TopBar />
       <Header />
 
@@ -34,7 +37,10 @@ const MainLayout = () => {
       {/* CTA Section */}
       <section className="bg-teal-50 py-12">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="md:w-1/2">
+          <motion.div variants={slideLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }} className="md:w-1/2 text-center md:text-left">
             <h4 className="text-2xl font-bold mb-2 text-gray-800">
               Best Solution for Your Business
             </h4>
@@ -42,7 +48,7 @@ const MainLayout = () => {
               Our solutions cater to both enterprise-level projects and small
               business needs, ensuring growth and efficiency at every stage.
             </p>
-          </div>
+          </motion.div>
 
           <div className="md:w-1/2 text-center md:text-right">
             <Button text="Contact Us" to="/contact" />
@@ -51,7 +57,7 @@ const MainLayout = () => {
       </section>
 
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

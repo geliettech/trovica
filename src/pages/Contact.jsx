@@ -1,4 +1,8 @@
 import { Helmet } from "react-helmet-async";
+import { FaLocationDot, FaPhone, FaEnvelope } from "react-icons/fa6";
+import {
+  COMPANY_INFO
+} from "../utils/constants";
 
 const ContactPage = () => {
   return (
@@ -19,13 +23,11 @@ const ContactPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-3">
-                    <i className="fa-solid fa-location-dot text-3xl  text-white bg-teal-500 p-4 rounded-full">
-                      k
-                    </i>
+                    <FaLocationDot className="text-3xl  text-white bg-teal-500 p-4 rounded-full" />
                     <h4 className="font-semibold uppercase">
                       Address
                       <span className="block text-sm font-normal text-gray-600 mt-1">
-                        245 Street, Sydney, Australia
+                        {COMPANY_INFO.address}
                       </span>
                     </h4>
                   </div>
@@ -33,13 +35,11 @@ const ContactPage = () => {
 
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-3">
-                    <i className="fa-solid fa-phone text-3xl text-white bg-teal-500 p-4 rounded-full">
-                      k
-                    </i>
+                    <FaPhone className="text-3xl  text-white bg-teal-500 p-4 rounded-full" />
                     <h4 className="font-semibold uppercase">
                       Phone
                       <span className="block text-sm font-normal text-gray-600 mt-1">
-                        +23 0034 5567 341
+                        {COMPANY_INFO.phone}
                       </span>
                     </h4>
                   </div>
@@ -47,13 +47,11 @@ const ContactPage = () => {
 
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-3">
-                    <i className="fa-regular fa-envelope text-3xl  text-white bg-teal-500 p-4 rounded-full">
-                      k
-                    </i>
+                    <FaEnvelope className="text-3xl  text-white bg-teal-500 p-4 rounded-full" />
                     <h4 className="font-semibold uppercase">
                       Email
                       <span className="block text-sm font-normal text-gray-600 mt-1">
-                        info@trovicagency.com
+                        {COMPANY_INFO.email}
                       </span>
                     </h4>
                   </div>

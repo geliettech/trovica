@@ -24,7 +24,7 @@ const NavBar = () => {
       <motion.ul
         className={`${
           menuOpen ? "block" : "hidden"
-        } lg:flex flex-col lg:flex-row lg:items-center gap-6 absolute lg:static top-full right-0 w-1/2 lg:w-auto bg-white lg:bg-transparent shadow lg:shadow-none z-50`}
+        } lg:flex flex-col lg:flex-row lg:items-center gap-6 absolute lg:static top-full left-0 w-full lg:w-auto bg-white lg:bg-transparent shadow lg:shadow-none z-50`}
         variants={mobileMenu}
         initial="hidden"
         animate="visible"
@@ -47,7 +47,7 @@ const NavBar = () => {
               {/* Dropdown Menu */}
               {openDropdown === idx && (
                 <motion.ul
-                  className="absolute left-0 lg:mt-2 mt-0 lg:top-full bg-white shadow rounded-md w-48 text-sm z-50"
+                  className="absolute left-0 lg:mt-2 mt-0 lg:top-full bg-white shadow rounded-md w-full lg:w-48 text-sm z-50"
                   variants={dropdown}
                   initial="hidden"
                   animate="visible"

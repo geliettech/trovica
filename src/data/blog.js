@@ -6,7 +6,7 @@ const Blogs = [
   {
     id: 1,
     title: "The Power of Responsive Design",
-    date: "20 June",
+    date: "20th June",
     year: "2025",
     img: blog1,
     description:
@@ -22,7 +22,7 @@ const Blogs = [
   {
     id: 2,
     title: "Creative Branding Tips",
-    date: "15 July",
+    date: "15th July",
     year: "2025",
     img: blog2,
     description:
@@ -38,7 +38,7 @@ const Blogs = [
   {
     id: 3,
     title: "Modern Web Development Trends",
-    date: "10 August",
+    date: "10th August",
     year: "2025",
     img: blog3,
     description:
@@ -54,7 +54,7 @@ const Blogs = [
   {
     id: 4,
     title: "The Power of Responsive Design",
-    date: "20 June",
+    date: "20th June",
     year: "2025",
     img: blog1,
     description:
@@ -70,7 +70,7 @@ const Blogs = [
   {
     id: 5,
     title: "Creative Branding Tips",
-    date: "15 July",
+    date: "15th July",
     year: "2025",
     img: blog2,
     description:
@@ -86,7 +86,7 @@ const Blogs = [
   {
     id: 6,
     title: "Modern Web Development Trends",
-    date: "10 August",
+    date: "10th August",
     year: "2025",
     img: blog3,
     description:

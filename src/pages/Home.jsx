@@ -17,11 +17,10 @@ import { Helmet } from "react-helmet-async";
 import {
   pageVariants,
   pageTransition,
-  staggerContainer,
   slideLeft,
   slideRight,
   scaleIn,
-  bounceIn,
+  bounceIn, fadeIn,
 } from "../animations/motion";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
@@ -58,13 +57,7 @@ const Home = () => {
           content="web design, web development, responsive layouts, creative design, graphics, branding"
         />
       </Helmet>
-      <motion.div
-        className=""
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
+      <div className="">
         {/* ==============  Hero Section  =========== */}
         <AnimatePresence mode="wait">
           <section
@@ -115,11 +108,10 @@ const Home = () => {
                 <span
                   key={index}
                   onClick={() => setSlideIndex(index)}
-                  className={`w-4 h-4 cursor-pointer transition ${
-                    index === slideIndex
-                      ? "bg-teal-600"
-                      : "bg-gray-400 hover:bg-white"
-                  }`}
+                  className={`w-4 h-4 cursor-pointer transition ${index === slideIndex
+                    ? "bg-teal-600"
+                    : "bg-gray-400 hover:bg-white"
+                    }`}
                   role="tab"
                   aria-selected={index === slideIndex}
                   aria-label={`Go to slide ${index + 1}`}
@@ -140,9 +132,9 @@ const Home = () => {
               stand out."
             />
             {/* Content */}
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Left Content */}
-              <div className="xl:col-span-6">
+              <div className="">
                 <motion.h4
                   className="page-title"
                   variants={scaleIn}
@@ -170,7 +162,7 @@ const Home = () => {
               </div>
 
               {/* Right Content: Mission, Vission, History */}
-              <div className="xl:col-span-5 xl:col-start-8 space-y-6">
+              <div className="space-y-6">
                 {AboutRightItems.map((item) => {
                   const Icon = item.icon;
 
@@ -357,7 +349,7 @@ const Home = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-100 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
                   {/* Overlay */}
@@ -401,10 +393,14 @@ const Home = () => {
               title="Latest Blog"
               desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
             />
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-8">
               {Blog.map((blog) => (
-                <div
+                <motion.div
                   key={blog.id}
+                  variants={fadeIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
                   className="bg-white shadow rounded-lg overflow-hidden"
                 >
                   <img src={blog.img} alt={blog.title} className="w-full" />
@@ -422,21 +418,16 @@ const Home = () => {
                       <span>{blog.year}</span>
                     </div>
                     <p className="blackText__paragraph">{blog.description}</p>
-                    <Link
-                      to={`/blog/${blog.id}`}
-                      className="mt-4 btn-primary rounded-md transformation"
-                    >
-                      Read More
-                    </Link>
+                    <Button text="Read More" to={`/blog/${blog.id}`} className="mt-8" />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </>
   );
-};
+}
 
 export default Home;

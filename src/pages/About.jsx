@@ -1,6 +1,6 @@
 import SectionHeader from "../components/SectionHeader";
 import { AboutItems, AboutRightItems } from "../data/about";
-  import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Button from "../components/Button";
 import { slideLeft, slideRight, scaleIn } from "../animations/motion";
@@ -26,9 +26,9 @@ const AboutPage = () => {
                     stand out."
           />
           {/* Content */}
-          <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Content */}
-            <div className="xl:col-span-6">
+            <div className="">
               <motion.h4
                 className="page-title"
                 variants={scaleIn}
@@ -56,7 +56,7 @@ const AboutPage = () => {
             </div>
 
             {/* Right Content: Mission, Vission, History */}
-            <div className="xl:col-span-5 xl:col-start-8 space-y-6">
+            <div className="space-y-6">
               {AboutRightItems.map((item) => {
                 const Icon = item.icon;
 

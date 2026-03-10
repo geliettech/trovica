@@ -3,14 +3,6 @@
 @import "tailwindcss";
 
 /* =========================
-   Theme variables
-========================= */
-@theme {
-  --font-poppins:
-    "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* =========================
    Base styles
 ========================= */
 @layer base {
@@ -20,7 +12,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-poppins);
+    font-family:
+      "Poppins",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
   }
 
   li {
@@ -35,32 +32,42 @@
 ========================= */
 @layer components {
   .container {
-    @apply container mx-auto px-4 md:px-6 lg:px-16 py-6;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 py-4 sm:py-6;
   }
   .transformation {
     @apply transform transition-transform duration-300 hover:scale-105 cursor-pointer;
   }
 
   .btn-primary {
-    @apply font-medium bg-teal-600 text-white hover:bg-teal-600/80 px-6 py-3 rounded text-sm md:text-base inline-flex items-center justify-center  uppercase;
+    @apply font-medium bg-teal-600 text-white hover:bg-teal-700 focus:bg-teal-700
+           px-4 sm:px-6 py-2 sm:py-3 rounded text-sm sm:text-base
+           inline-flex items-center justify-center uppercase
+           transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
   }
 
   .nav__link {
     @apply font-medium text-gray-700 text-sm hover:text-gray-950;
   }
+
   .dashed__teal {
-    @apply after:content-[''] after:block after:w-12 after:h-0.5 after:bg-teal-600 after:mx-auto after:mt-2;
+    @apply after:content-[''] after:block after:w-8 sm:after:w-12 after:h-0.5
+           after:bg-teal-600 after:mx-auto after:mt-2;
   }
+
   .whiteText__paragraph {
     @apply text-white font-normal text-base leading-relaxed;
   }
+
   .blackText__paragraph {
     @apply text-gray-600 font-normal text-base leading-relaxed;
   }
+
   .page-title {
-    @apply relative font-semibold text-xl pb-2 text-gray-700 capitalize mb-4;
+    @apply relative font-semibold text-lg sm:text-xl md:text-2xl pb-2
+           text-gray-700 capitalize mb-3 sm:mb-4;
   }
+
   .page-title::before {
-    @apply content-[''] absolute w-10 h-0.5 bg-teal-600 bottom-0;
+    @apply content-[''] absolute w-6 sm:w-8 md:w-10 h-0.5 bg-teal-600 bottom-0;
   }
 }
