@@ -2,13 +2,12 @@ import { Link } from "react-router";
 import SectionHeader from "../components/SectionHeader";
 import Blogs from "../data/blog";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+import Button from "../components/Button";
+import { fadeIn } from "../animations/motion";
 
 const BlogPage = () => {
   return (
-    // <div className='container mx-auto px-4 md:px-6 lg:px-16 py-5'>
-    //   <BlogSection />
-    //   previous 1 2 3 Next
-    // </div>
     <>
       <Helmet>
         <title>Blog | Trovica Agency</title>
@@ -25,10 +24,14 @@ const BlogPage = () => {
             title="Latest Blog"
             desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
           />
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {Blogs.map((blog) => (
-              <div
+              <motion.div
                 key={blog.id}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
                 className="bg-white shadow rounded-lg overflow-hidden"
               >
                 <img src={blog.img} alt={blog.title} className="w-full" />
@@ -46,15 +49,14 @@ const BlogPage = () => {
                     <span>{blog.year}</span>
                   </div>
                   <p className="blackText__paragraph">{blog.description}</p>
-                  <Link
-                    to={`/blog/${blog.id}`}
-                    className="mt-4 btn-primary rounded-md transformation"
-                  >
-                    Read More
-                  </Link>
+                  <Button text="Read More" to={`/blog/${blog.id}`} className="mt-8" />
                 </div>
-              </div>
+              </motion.div>
             ))}
+          </div>
+
+          <div className='container'>
+            previous 1 2 3 Next
           </div>
         </div>
       </section>

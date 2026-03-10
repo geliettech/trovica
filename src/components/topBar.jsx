@@ -1,7 +1,7 @@
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { staggerContainer, slideUp } from "../animations/motion";
+import { slideUp } from "../animations/motion";
 import {
   COMPANY_INFO, SOCIAL_LINKS,
 } from "../utils/constants";
@@ -11,13 +11,9 @@ const TopBar = () => {
     <section className="bg-teal-500">
       <motion.div
         className="container py-3"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
       >
         <motion.div
-          className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3 text-gray-100 text-sm"
+          className="flex flex-col md:flex-row items-center md:justify-between gap-3 text-gray-100 text-sm"
           variants={slideUp}
           initial="hidden"
           whileInView="visible"

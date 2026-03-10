@@ -1,7 +1,6 @@
 import Logo from "./logo";
 import NavBar from "./navBar";
 import { motion } from "framer-motion";
-import { staggerContainer } from "../animations/motion";
 
 const Header = () => {
   return (
@@ -9,10 +8,6 @@ const Header = () => {
       <div className="container mx-auto">
         <motion.nav
           className="flex items-center justify-between relative"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
         >
           {/* Logo */}
           <Logo />

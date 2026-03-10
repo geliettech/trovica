@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import slides from "../data/testimonials";
 import SectionHeader from "./SectionHeader";
 
@@ -38,28 +39,27 @@ const TestimonialsCard = () => {
         />
 
         {/* Slider */}
-        <div className="relative h-84 mt-12 flex justify-center">
+        <div className="relative h-80 mt-12 flex justify-center">
           {visibleSlides.map((slide, index) => {
             const isActive = index === 1; // Middle slide
             const isLeft = index === 0;
             const isRight = index === 2;
 
             return (
-              <div
+              <motion.div
                 key={index}
-                className={`absolute transition-all duration-500 p-6 sm:p-8 rounded-lg text-center
+                initial={{ scale: 0.95, opacity: 0.6 }}
+                animate={{
+                  x: isLeft ? "-50%" : isRight ? "50%" : "0%",
+                  scale: isActive ? 1 : 0.95,
+                  opacity: isActive ? 1 : 0.6,
+                }}
+                transition={{ duration: 0.5 }}
+                className={`absolute p-6 sm:p-8 rounded-lg text-center
                   w-full max-w-md
-                  ${
-                    isActive
-                      ? "z-20 scale-100 opacity-100 bg-teal-600 text-white shadow-xl"
-                      : "z-10 scale-95 opacity-60 bg-white/10 backdrop-blur-sm text-gray-100"
-                  }
-                  ${
-                    isLeft
-                      ? "translate-x-[-50%] sm:translate-x-[-50%]"
-                      : isRight
-                        ? "translate-x-[50%] sm:translate-x-[50%]"
-                        : ""
+                  ${isActive
+                    ? "z-20 bg-teal-600 text-white shadow-xl"
+                    : "z-10 bg-white/10 backdrop-blur-sm text-gray-100"
                   }
                 `}
               >
@@ -74,29 +74,29 @@ const TestimonialsCard = () => {
                 <h4 className="text-lg font-semibold">
                   {slide.name}
                   <span
-                    className={`block text-sm font-normal mt-4 ${
-                      isActive ? "text-white/70" : "text-gray-300"
-                    }`}
+                    className={`block text-sm font-normal mt-4 ${isActive ? "text-white/70" : "text-gray-300"
+                      }`}
                   >
                     {slide.role}
                   </span>
                 </h4>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-3 mt-18">
+        <div className="flex justify-center gap-3 mt-16">
           {slides.map((_, index) => (
-            <button
+            <motion.button
               key={index}
               onClick={() => setCurrent(index)}
+              animate={{ scale: current === index ? 1.25 : 1 }}
+              transition={{ duration: 0.3 }}
               className={`w-3 h-3 rounded-full transition-all duration-300
-                ${
-                  current === index
-                    ? "bg-teal-500 scale-125"
-                    : "bg-white/40 hover:bg-white"
+                ${current === index
+                  ? "bg-teal-500"
+                  : "bg-white/40 hover:bg-white"
                 }
               `}
             />
