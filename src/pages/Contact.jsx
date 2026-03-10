@@ -23,7 +23,7 @@ const ContactPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-3">
-                    <FaLocationDot className="text-3xl  text-white bg-teal-500 p-4 rounded-full" />
+                    <FaLocationDot className="text-4xl  text-white bg-teal-500 p-2 rounded-full" />
                     <h4 className="font-semibold uppercase">
                       Address
                       <span className="block text-sm font-normal text-gray-600 mt-1">
@@ -35,7 +35,7 @@ const ContactPage = () => {
 
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-3">
-                    <FaPhone className="text-3xl  text-white bg-teal-500 p-4 rounded-full" />
+                    <FaPhone className="text-4xl  text-white bg-teal-500 p-2 rounded-full" />
                     <h4 className="font-semibold uppercase">
                       Phone
                       <span className="block text-sm font-normal text-gray-600 mt-1">
@@ -47,7 +47,7 @@ const ContactPage = () => {
 
                 <div className="text-center">
                   <div className="flex flex-col items-center gap-3">
-                    <FaEnvelope className="text-3xl  text-white bg-teal-500 p-4 rounded-full" />
+                    <FaEnvelope className="text-4xl  text-white bg-teal-500 p-2 rounded-full" />
                     <h4 className="font-semibold uppercase">
                       Email
                       <span className="block text-sm font-normal text-gray-600 mt-1">
