@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Button from "../components/Button";
 import { fadeIn } from "../animations/motion";
+import ReactPaginate from 'react-paginate';
 import { useState } from "react";
 
 const BlogPage = () => {
@@ -16,11 +17,13 @@ const BlogPage = () => {
   const endIndex = startIndex + postsPerPage;
   const visibleBlogs = Blogs.slice(startIndex, endIndex);
 
-  const changePage = (page) => {
-    if (page < 1 || page > totalPages) return;
+  // handler used by react-paginate (zero-indexed)
+  const handlePageClick = ({ selected }) => {
+    const page = selected + 1;
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
 
   return (
     <>
@@ -39,7 +42,7 @@ const BlogPage = () => {
             title="Latest Blog"
             desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
           />
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {visibleBlogs.map((blog) => (
               <motion.div
                 key={blog.id}
@@ -71,38 +74,22 @@ const BlogPage = () => {
           </div>
 
           <div className="flex justify-center mt-12">
-            <nav className="inline-flex items-center space-x-1">
-              <button
-                onClick={() => changePage(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-              >
-                &lt;&lt;
-              </button>
-              {[...Array(totalPages)].map((_, idx) => {
-                const pageNum = idx + 1;
-                return (
-                  <button
-                    key={pageNum}
-                    onClick={() => changePage(pageNum)}
-                    className={`px-3 py-1 rounded-md ${
-                      pageNum === currentPage
-                        ? 'bg-teal-500 text-white'
-                        : 'bg-gray-200 hover:bg-gray-300'
-                    }`}
-                  >
-                    {pageNum}
-                  </button>
-                );
-              })}
-              <button
-                onClick={() => changePage(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-              >
-                &gt;&gt;
-              </button>
-            </nav>
+            <ReactPaginate
+              pageCount={totalPages}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={1}
+              onPageChange={handlePageClick}
+              forcePage={currentPage - 1}
+              containerClassName="inline-flex items-center space-x-1 flex-wrap"
+              pageClassName=""
+              pageLinkClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 transition"
+              activeLinkClassName="bg-teal-500 text-white"
+              previousLabel="<<"
+              nextLabel=">>"
+              previousClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
+              nextClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
+              disabledClassName="opacity-50"
+            />
           </div>
         </div>
       </section>
