@@ -5,8 +5,27 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Button from "../components/Button";
 import { fadeIn } from "../animations/motion";
+import ReactPaginate from 'react-paginate';
+import { useState } from "react";
+import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
+
 
 const BlogPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
+  const totalPages = Math.ceil(Blogs.length / postsPerPage);
+
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const visibleBlogs = Blogs.slice(startIndex, endIndex);
+
+  // handler used by react-paginate (zero-indexed)
+  const handlePageClick = ({ selected }) => {
+    const page = selected + 1;
+    setCurrentPage(page);
+  };
+
+
   return (
     <>
       <Helmet>
@@ -24,8 +43,8 @@ const BlogPage = () => {
             title="Latest Blog"
             desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
           />
-          <div className="grid lg:grid-cols-3 gap-8">
-            {Blogs.map((blog) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {visibleBlogs.map((blog) => (
               <motion.div
                 key={blog.id}
                 variants={fadeIn}
@@ -55,8 +74,23 @@ const BlogPage = () => {
             ))}
           </div>
 
-          <div className='container'>
-            previous 1 2 3 Next
+          <div className="flex justify-center mt-12">
+            <ReactPaginate
+              pageCount={totalPages}
+              pageRangeDisplayed={0}
+              marginPagesDisplayed={0}
+              onPageChange={handlePageClick}
+              forcePage={currentPage - 1}
+              containerClassName="inline-flex items-center space-x-2 flex-wrap"
+              pageClassName=""
+              pageLinkClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 transition"
+              activeLinkClassName="bg-teal-500 text-white"
+              previousLabel={<FaAnglesLeft />}
+              nextLabel={<FaAnglesRight />}
+              previousClassName="px-3 py-2 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer"
+              nextClassName="px-3 py-2 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer"
+              disabledClassName="opacity-30"
+            />
           </div>
         </div>
       </section>
