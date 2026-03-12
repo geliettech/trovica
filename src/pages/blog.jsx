@@ -7,6 +7,8 @@ import Button from "../components/Button";
 import { fadeIn } from "../animations/motion";
 import ReactPaginate from 'react-paginate';
 import { useState } from "react";
+import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
+
 
 const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +23,6 @@ const BlogPage = () => {
   const handlePageClick = ({ selected }) => {
     const page = selected + 1;
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
 
@@ -76,19 +77,19 @@ const BlogPage = () => {
           <div className="flex justify-center mt-12">
             <ReactPaginate
               pageCount={totalPages}
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
+              pageRangeDisplayed={0}
+              marginPagesDisplayed={0}
               onPageChange={handlePageClick}
               forcePage={currentPage - 1}
-              containerClassName="inline-flex items-center space-x-1 flex-wrap"
+              containerClassName="inline-flex items-center space-x-2 flex-wrap"
               pageClassName=""
               pageLinkClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 transition"
               activeLinkClassName="bg-teal-500 text-white"
-              previousLabel="<<"
-              nextLabel=">>"
-              previousClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
-              nextClassName="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
-              disabledClassName="opacity-50"
+              previousLabel={<FaAnglesLeft />}
+              nextLabel={<FaAnglesRight />}
+              previousClassName="px-3 py-2 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer"
+              nextClassName="px-3 py-2 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer"
+              disabledClassName="opacity-30"
             />
           </div>
         </div>
