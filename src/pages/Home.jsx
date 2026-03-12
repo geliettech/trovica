@@ -364,15 +364,13 @@ const Home = () => {
                       {member.socials.map((social, sidx) => {
                         const SocialIcon = social.icon;
                         return (
-                          <a
+                          <Link
                             key={sidx}
-                            href={social.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            to={social.link}
                             className="hover:text-teal-500 transition-colors duration-300"
                           >
                             <SocialIcon />
-                          </a>
+                          </Link>
                         );
                       })}
                     </div>
