@@ -5,8 +5,23 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Button from "../components/Button";
 import { fadeIn } from "../animations/motion";
+import { useState } from "react";
 
 const BlogPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
+  const totalPages = Math.ceil(Blogs.length / postsPerPage);
+
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const visibleBlogs = Blogs.slice(startIndex, endIndex);
+
+  const changePage = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <Helmet>
@@ -25,7 +40,7 @@ const BlogPage = () => {
             desc="We are a full-service creative agency offering web design, web development, responsive design, graphics, and branding solutions to elevate your business online."
           />
           <div className="grid lg:grid-cols-3 gap-8">
-            {Blogs.map((blog) => (
+            {visibleBlogs.map((blog) => (
               <motion.div
                 key={blog.id}
                 variants={fadeIn}
@@ -55,8 +70,39 @@ const BlogPage = () => {
             ))}
           </div>
 
-          <div className='container'>
-            previous 1 2 3 Next
+          <div className="flex justify-center mt-12">
+            <nav className="inline-flex items-center space-x-1">
+              <button
+                onClick={() => changePage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+              >
+                &lt;&lt;
+              </button>
+              {[...Array(totalPages)].map((_, idx) => {
+                const pageNum = idx + 1;
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => changePage(pageNum)}
+                    className={`px-3 py-1 rounded-md ${
+                      pageNum === currentPage
+                        ? 'bg-teal-500 text-white'
+                        : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+              <button
+                onClick={() => changePage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+              >
+                &gt;&gt;
+              </button>
+            </nav>
           </div>
         </div>
       </section>
