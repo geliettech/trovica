@@ -10,6 +10,7 @@ import MarketingCampaigns from "./pages/Gallery/marketing-campaigns";
 import CreativeConcepts from "./pages/Gallery/creative-concepts";
 import BlogPage from "./pages/blog";
 import BlogDetails from "./pages/blogDetails";
+import BlogCategory from "./pages/BlogCategory";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -37,6 +38,7 @@ function App() {
           />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
+          <Route path="/blog/category/:category" element={<BlogCategory />} />
           <Route path="/contact" element={<ContactPage />} />
         </Route>
 
