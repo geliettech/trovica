@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50" role="banner">
-      <div className="container mx-auto">
+    <header className="bg-gray-50 shadow-md sticky top-0 z-50" role="banner">
+      <div className="container">
         <motion.nav
           className="flex items-center justify-between relative"
         >
