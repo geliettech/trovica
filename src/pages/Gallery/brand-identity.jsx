@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import { galleryCategories } from "../../data/galleryData";
+import { galleryCategories } from "../../data/gallery";
 
 
 const BrandIdentity = () => {
-    const [activeImage, setActiveImage] = useState(null);
-    const gallery = galleryCategories.find(cat => cat.id === "brand-identity");
-    
+  const [activeImage, setActiveImage] = useState(null);
+  const gallery = galleryCategories.find(cat => cat.id === "brand-identity");
+
   return (
     <>
       <Helmet>
@@ -16,7 +16,7 @@ const BrandIdentity = () => {
           content="Discover our brand identity projects that showcase unique visual concepts and strategic branding solutions."
         />
       </Helmet>
-<section className="py-24">
+      <section className="py-24 bg-gray-50">
         <div className="container">
           <h2 className="text-3xl text-teal-500 font-semibold text-center mb-12">{gallery.title}</h2>
 
@@ -26,7 +26,7 @@ const BrandIdentity = () => {
               <div
                 key={index}
                 className="relative overflow-hidden cursor-pointer group"
-                onClick={() => setActiveImage(img)}
+                onClick={() => setActiveImage(img)} 
               >
                 <img
                   src={img}

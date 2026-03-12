@@ -1,19 +1,27 @@
 import {
   COMPANY_INFO,
   NAV_LINKS,
-  LATEST_POSTS,
   SOCIAL_LINKS,
 } from "../utils/constants";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { NavLink } from "react-router";
 import { FaAnglesRight, FaLocationDot, FaPhone, FaMobileButton, FaEnvelope, FaEarthEurope } from "react-icons/fa6";
-
+import Blogs from "../data/blog";
 
 
 const Footer = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+
+  // Latest Posts
+  const latestPosts = [...Blogs]
+    .slice(-5)
+    .reverse()
+    .map((post) => ({
+      label: post.title,
+      link: `/blog/${post.id}`,
+    }));
+
 
   return (
     <footer className="bg-gray-900 text-gray-200 pt-8 md:pt-12 lg:pt-16 px-4 md:px-6">
@@ -89,15 +97,15 @@ const Footer = () => {
         <div className="md:col-span-4">
           <h4 className="text-lg sm:text-xl font-semibold mb-4">Latest Posts</h4>
           <ul className="space-y-2">
-            {LATEST_POSTS.map((post, idx) => (
+            {latestPosts.map((post, idx) => (
               <li key={idx}>
-                <a
-                  href={post.path}
+                <Link
+                  to={post.link}
                   className="flex items-center gap-2 text-gray-400 hover:text-teal-400 transition text-sm sm:text-base"
                 >
                   <FaAnglesRight />
                   <span className="truncate">{post.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

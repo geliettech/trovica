@@ -59,7 +59,7 @@
   }
 
   .blackText__paragraph {
-    @apply text-gray-600 font-normal text-base leading-relaxed;
+    @apply text-gray-700 font-normal text-base leading-relaxed;
   }
 
   .page-title {

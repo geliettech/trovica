@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import { galleryCategories } from "../../data/galleryData";
+import { galleryCategories } from "../../data/gallery";
 
 
 const MarketingCampaigns = () => {
@@ -16,7 +16,7 @@ const MarketingCampaigns = () => {
           content="Explore our marketing campaigns that demonstrate our expertise in creating impactful and results-driven promotional strategies."
         />
       </Helmet>
-      <section className="py-24">
+      <section className="py-24 bg-gray-50">
         <div className="container">
           <h2 className="text-3xl text-teal-500 font-semibold text-center mb-12">{gallery.title}</h2>
 

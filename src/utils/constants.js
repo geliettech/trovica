@@ -35,13 +35,6 @@ export const NAV_LINKS = [
   { label: "Contact Us", path: "/contact" },
 ];
 
-export const LATEST_POSTS = [
-  { label: "Responsive Web Design Tips", path: "#" },
-  { label: "Creative Branding Ideas", path: "#" },
-  { label: "UX/UI Best Practices", path: "#" },
-  { label: "Modern Web Development", path: "#" },
-  { label: "Graphics Design Inspiration", path: "#" },
-];
 
 export const SOCIAL_LINKS = [
   { icon: FaFacebookF, url: "/" },
