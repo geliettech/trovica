@@ -1,6 +1,8 @@
 # Trovica 🌐
 
-A modern and responsive digital agency website showcasing services such as web design, development, branding, and creative solutions.
+A modern and responsive digital agency website showcasing services such as **Web Design, Web Development, Branding, Graphics Design, and Creative Solutions.**
+
+---
 
 ## 🔗 Live Demo
 
@@ -12,27 +14,33 @@ A modern and responsive digital agency website showcasing services such as web d
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-**Trovica** is a creative digital agency website designed to present professional services in web design, development, branding, and digital creativity.
+**Trovica** is a creative digital agency website designed to showcase professional services in **web design, development, graphics design, branding, and digital creativity**.
 
 The project focuses on delivering a **clean user interface, responsive layout, and engaging design** to provide an excellent user experience across all devices.
 
-This project demonstrates practical frontend development skills including responsive layouts, component structure, and modern UI design.
+This project demonstrates practical **frontend development skills** including:
+
+* Responsive layouts
+* Smooth animations
+* Component-based architecture
+* Modern UI design
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-* Fully responsive design for mobile, tablet, and desktop
+* Fully responsive design for **mobile, tablet, and desktop**
 * Clean and modern UI
 * Service-focused layout for digital agencies
 * Smooth navigation and user-friendly interface
 * Optimized performance and structure
+* Interactive animations
 
 ---
 
-## 🛠️ Services Highlighted
+# 🛠️ Services Highlighted
 
 * **Web Design**
 * **Web Development**
@@ -43,16 +51,46 @@ This project demonstrates practical frontend development skills including respon
 
 ---
 
-## 🚀 Technologies Used
+# 🚀 Technologies Used
 
-* HTML5
-* CSS3
-* JavaScript
-* React / Modern Frontend Tools
+### Frontend
+
+* React
+* Tailwind CSS
+* React Router
+
+### Animation & UI
+
+* Framer Motion
+* React CountUp
+* React Icons
+
+### Utilities & Tools
+
+* React Helmet Async
+* React Intersection Observer
+* React Paginate
+
+### Core Libraries
+
+```json
+{
+  "framer-motion": "^12.23.26",
+  "react": "^18.2.0",
+  "react-countup": "^6.5.3",
+  "react-dom": "^18.2.0",
+  "react-helmet-async": "^2.0.5",
+  "react-icons": "^5.5.0",
+  "react-intersection-observer": "^10.0.2",
+  "react-paginate": "^8.3.0",
+  "react-router": "^7.11.0",
+  "tailwindcss": "^4.1.18"
+}
+```
 
 ---
 
-## 📱 Responsive Design
+# 📱 Responsive Design
 
 The website is optimized to work seamlessly across different screen sizes:
 
@@ -62,7 +100,7 @@ The website is optimized to work seamlessly across different screen sizes:
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```
 trovica/
@@ -81,7 +119,7 @@ trovica/
 
 ---
 
-## ⚙️ Installation & Setup
+# ⚙️ Installation & Setup
 
 To run this project locally:
 
@@ -101,7 +139,7 @@ npm run dev
 
 ---
 
-## 🌍 Deployment
+# 🌍 Deployment
 
 The project is deployed on **Netlify**.
 
@@ -110,28 +148,22 @@ https://trovica.netlify.app/
 
 ---
 
-## 📷 Preview
+# 📷 Preview
 
-Visit the live demo to explore the full design and features.
+Visit the **Live Demo** to explore the full design and features.
 
 ---
 
-## 👩‍💻 Author
+# 👩‍💻 Author
 
 **Ogechi Juliet Uhegbu (OGE)**
 Frontend Developer
 
 * GitHub: https://github.com/geliettech
-* Portfolio: https://trovica.netlify.app/
+* Portfolio: https://ogechiuhegbu.vercel.app/
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
-If you like this project, please consider giving it a **star ⭐ on GitHub** to support the work.
-
----
-
-## 📜 License
-
-This project is open-source and available under the **MIT License**.
+If you like this project, please consider giving it a **⭐ star on GitHub**.
