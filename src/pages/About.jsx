@@ -36,7 +36,7 @@ const AboutPage = () => {
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
               >
-                Welcome to Halim
+                Welcome to Trovica
               </motion.h4>
 
               <motion.div

@@ -9,13 +9,13 @@ const slides = [
     image: "img/testimonials/02.png",
     name: "Jane Smith",
     role: "Marketing Head, CreativeHub",
-    text: "The team at Halim Agency delivered outstanding branding and graphics design. Our visual identity now truly reflects our company values.",
+    text: "The team at Trovica Agency delivered outstanding branding and graphics design. Our visual identity now truly reflects our company values.",
   },
   {
     image: "img/testimonials/03.png",
     name: "Alice Johnson",
     role: "Founder, StartUpX",
-    text: "Working with Halim Agency was seamless. Their creative design solutions helped our business stand out in a competitive market.",
+    text: "Working with Trovica Agency was seamless. Their creative design solutions helped our business stand out in a competitive market.",
   },
   {
     image: "img/testimonials/04.png",
