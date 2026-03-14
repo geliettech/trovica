@@ -61,7 +61,7 @@ const SectionHeader = ({
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
       >
-        <p className={`blackText__paragraph ${descClassName}`}>{desc}</p>
+        <p className={`blackText__paragraph text-center xl:text-left ${descClassName}`}>{desc}</p>
       </motion.div>
     </motion.div>
   );

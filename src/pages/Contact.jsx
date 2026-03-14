@@ -64,7 +64,6 @@ const ContactPage = () => {
               },
             ].map((info, idx) => (
               <motion.div
-                key={blog.id}
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
@@ -141,10 +140,10 @@ const ContactPage = () => {
         {/* successfully Message */}
         {showAlert && (
           <motion.div variants={bounceIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.2 }} className="fixed top-6 right-6 bg-teal-400 text-white p-4 rounded-lg shadow-lg z-50 flex gap-2">
-           <FaCircleCheck /> Message sent successfully!
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }} className="fixed top-12 right-6 bg-teal-400 text-white p-4 rounded-lg shadow-lg z-50 flex gap-2">
+            <FaCircleCheck /> Message sent successfully!
           </motion.div>
         )}
       </section>
